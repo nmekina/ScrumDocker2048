@@ -1,4 +1,4 @@
-package com.example.scrumdocker2048;
+package com.example.scrumdocker2048.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
