@@ -1,0 +1,44 @@
+import java.util.Random;
+
+public class Game2048 {
+  public static final int SIZE = 4;
+  public static final int WINNING_TILE = 2048;
+
+  private int[][] tiles;
+  private boolean dead;
+  private boolean won;
+
+  public Game2048() {
+    tiles = new int[SIZE][SIZE];
+    dead = false;
+    won = false;
+    addRandomTile();
+    addRandomTile();
+  }
+
+  private void addRandomTile() {
+    Random rnd = new Random();
+    int x, y;
+    do {
+      x = rnd.nextInt(SIZE);
+      y = rnd.nextInt(SIZE);
+    } while (tiles[x][y] != 0);
+    tiles[x][y] = rnd.nextInt(10) == 0 ? 4 : 2;
+  }
+
+  public void move(Direction direction) {
+    // TODO: Implement me!
+  }
+
+  public boolean isDead() {
+    return dead;
+  }
+
+  public boolean isWon() {
+    return won;
+  }
+
+  public int[][] getTiles() {
+    return tiles;
+  }
+}
