@@ -1,5 +1,5 @@
 package com.example.scrumdocker2048.Controller;
 
-public class StartmenueController {
+public class StartmenueController extends AbstractController {
 
 }

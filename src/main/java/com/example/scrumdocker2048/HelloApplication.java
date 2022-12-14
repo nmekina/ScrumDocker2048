@@ -1,6 +1,7 @@
 package com.example.scrumdocker2048;
 
-import com.example.scrumdocker2048.Controller.HelloController;
+import com.example.scrumdocker2048.Controller.AbstractController;
+import com.example.scrumdocker2048.Controller.StartmenueController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,9 +12,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("username.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AbstractController.class.getResource("username.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Bankaccount!");
         stage.setScene(scene);
         stage.show();
     }
