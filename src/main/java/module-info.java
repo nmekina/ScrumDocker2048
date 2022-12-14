@@ -1,6 +1,7 @@
 module com.example.scrumdocker2048 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.example.scrumdocker2048 to javafx.fxml;
