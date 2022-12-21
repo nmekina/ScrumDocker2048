@@ -35,5 +35,10 @@
       <Label fx:id="labelHighscore" layoutX="371.0" layoutY="73.0" prefHeight="25.0" prefWidth="100.0" />
       <Label layoutX="471.0" layoutY="48.0" prefHeight="25.0" prefWidth="100.0" text="Highest Score:" />
       <Label fx:id="labelHighestScore" layoutX="471.0" layoutY="69.0" prefHeight="25.0" prefWidth="100.0" />
+      <Label fx:id="labelStartPlay" layoutX="150.0" layoutY="116.0" prefHeight="36.0" prefWidth="400.0" text="Left-Click to play">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
