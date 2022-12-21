@@ -84,25 +84,15 @@ public class PlayfieldController extends AbstractController {
         public void handle(KeyEvent event) {
             KeyCode key = event.getCode();
             switch (key) {
-                case UP:
-                    System.out.println("up");
-                    break;
-                case DOWN:
-                    System.out.println("down");
-                    break;
-                case LEFT:
-                    System.out.println("left");
-                    break;
-                case RIGHT:
-                    System.out.println("right");
-                    break;
-                default:
-                    System.out.println("no available action");
-                    break;
+                case UP -> System.out.println("up");
+                case DOWN -> System.out.println("down");
+                case LEFT -> System.out.println("left");
+                case RIGHT -> System.out.println("right");
+                default -> System.out.println("no available action");
             }
             TilePane tp = new TilePane(4);
-            int x = (int) (Math.random() * 3);
-            int y = (int) (Math.random() * 3);
+            int x = (int) (Math.random() * 4);
+            int y = (int) (Math.random() * 4);
             gridPlayfield.add(tp, x, y);
 
         }

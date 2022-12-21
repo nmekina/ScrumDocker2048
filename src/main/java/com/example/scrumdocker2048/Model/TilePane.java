@@ -20,6 +20,7 @@ public class TilePane extends Pane {
 
         }
         labelValue.setText(String.valueOf(value));
+        labelValue.getStyleClass().add("tileLabel");
         this.getChildren().add(labelValue);
         }
 
