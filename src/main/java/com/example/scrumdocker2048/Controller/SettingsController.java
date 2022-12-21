@@ -13,6 +13,8 @@ public class SettingsController extends AbstractController {
 
     public Label labelColorPickerPlayfield;
     public Label labelColorPickerTiles;
+    public ColorPicker colorPickerPf;
+    public ColorPicker colorPickerTIles;
     @FXML
     private Button btnSave;
 
