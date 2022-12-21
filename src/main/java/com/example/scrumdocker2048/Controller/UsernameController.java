@@ -1,6 +1,9 @@
 package com.example.scrumdocker2048.Controller;
 
+import com.example.scrumdocker2048.Model.Database;
 import com.example.scrumdocker2048.Model.Username;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +15,10 @@ import javafx.scene.input.DragEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class UsernameController extends AbstractController {
 
@@ -33,12 +40,17 @@ public class UsernameController extends AbstractController {
     @FXML
     private Button btnClose;
 
-    ObservableList<Username> list = FXCollections.observableArrayList();
-
     public void initialize() {
-        txtUsername.setPromptText("username");
-        txtPassword.setPromptText("password");
-        dropdownUsername.setItems(list);
+        this.txtUsername.setPromptText("username");
+        this.txtPassword.setPromptText("password");
+        this.dropdownUsername.setItems(Username.getList());
+        dropdownUsername.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            // if items of the list are changed
+            public void changed(ObservableValue ov, Number value, Number new_value) {
+                // text for the label to the selected item
+                txtUsername.setText(dropdownUsername.getItems().get(new_value.intValue()) + "");
+            }
+        });
     }
 
     @FXML
@@ -62,19 +74,15 @@ public class UsernameController extends AbstractController {
 
     @FXML
     void btnPlayPressed(ActionEvent event) {
-        Stage stage = (Stage) btnPlay.getScene().getWindow();
-        stage.close();
-        try {
-            HelloController c = this.loadFxmlFile("hello-view.fxml", "Spiel",
-                    ((Button) event.getSource()).getScene().getWindow(), HelloController.class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        if ((!txtUsername.getText().equals("")) && (!txtPassword.getText().equals(""))) {
+            Stage stage = (Stage) btnPlay.getScene().getWindow();
+            stage.close();
+            try {
+                HelloController c = this.loadFxmlFile("hello-view.fxml", "Spiel",
+                        ((Button) event.getSource()).getScene().getWindow(), HelloController.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
-
-    @FXML
-    void dropdownUsernameExited(DragEvent event) {
-
     }
 }
