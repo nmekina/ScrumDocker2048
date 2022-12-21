@@ -1,21 +1,29 @@
 package com.example.scrumdocker2048.Controller;
 
+import com.example.scrumdocker2048.Model.Position;
+import com.example.scrumdocker2048.Model.TilePane;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Window;
 
+import java.io.File;
 import java.io.IOException;
 
 public class PlayfieldController extends AbstractController {
 
+    public ColumnConstraints Grridpane;
     KeyActionEventHandler keyActionEventHandler = new KeyActionEventHandler();
     StartEventHandler startEventhandler = new StartEventHandler();
     @FXML
@@ -33,6 +41,10 @@ public class PlayfieldController extends AbstractController {
     public Label labelHighscore;
     @FXML
     public Label labelHighestScore;
+
+
+
+
 
 
 
@@ -72,22 +84,17 @@ public class PlayfieldController extends AbstractController {
         public void handle(KeyEvent event) {
             KeyCode key = event.getCode();
             switch (key) {
-                case UP:
-                    System.out.println("up");
-                    break;
-                case DOWN:
-                    System.out.println("down");
-                    break;
-                case LEFT:
-                    System.out.println("left");
-                    break;
-                case RIGHT:
-                    System.out.println("right");
-                    break;
-                default:
-                    System.out.println("no available action");
-                    break;
+                case UP -> System.out.println("up");
+                case DOWN -> System.out.println("down");
+                case LEFT -> System.out.println("left");
+                case RIGHT -> System.out.println("right");
+                default -> System.out.println("no available action");
             }
+            TilePane tp = new TilePane(4);
+            int x = (int) (Math.random() * 4);
+            int y = (int) (Math.random() * 4);
+            gridPlayfield.add(tp, x, y);
+
         }
     }
 
