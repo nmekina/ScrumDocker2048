@@ -12,9 +12,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AbstractController.class.getResource("username.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AbstractController.class.getResource("settings.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Bankaccount!");
+        stage.setTitle("2048!");
         stage.setScene(scene);
         stage.show();
     }
