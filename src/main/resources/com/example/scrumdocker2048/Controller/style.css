@@ -1,0 +1,50 @@
+/*
+https://colordesigner.io/gradient-generator
+ */
+.tile_2 {
+    background-color: #6e78fa;
+}
+
+.tile_4 {
+    background-color: #0082f9;
+}
+
+.tile_8 {
+    background-color: #0087ed;
+}
+
+.tile_16 {
+    background-color: #0088d8;
+}
+
+.tile_32 {
+    background-color: #0086bd;
+}
+
+.tile_64 {
+    background-color: #0082a0;
+}
+
+.tile_128 {
+    background-color: #007d82;
+}
+
+.tile_256 {
+    background-color: #007766;
+}
+
+.tile_512 {
+    background-color: #00704f;
+}
+
+.tile_1024 {
+    background-color: #28683d;
+}
+
+.tile_2048 {
+    background-color: #406030;
+}
+
+.tile_above {
+    background-color: #4d582a;
+}

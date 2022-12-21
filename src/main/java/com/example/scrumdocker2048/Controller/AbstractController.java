@@ -27,7 +27,8 @@ public abstract class AbstractController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(owner);
         }
-
+        Stage closestage = (Stage) owner;
+        closestage.close();
         stage.show();
 
         return controller;

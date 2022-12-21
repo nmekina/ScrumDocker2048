@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Klasse fürs wechseln der Scene in das mitegegebene fxml-Fenster
+ */
 public class ChangeScene {
 
     /**
