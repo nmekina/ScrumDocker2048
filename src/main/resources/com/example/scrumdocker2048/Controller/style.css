@@ -2,31 +2,31 @@
 https://colordesigner.io/gradient-generator
  */
 .tile_2 {
-    background-color: #6e78fa;
+    -fx-background-color: #6e78fa;
 }
 
 .tile_4 {
-    background-color: #0082f9;
+    -fx-background-color: #0082f9;
 }
 
 .tile_8 {
-    background-color: #0087ed;
+    -fx-background-color: #0087ed;
 }
 
 .tile_16 {
-    background-color: #0088d8;
+    -fx-background-color: #0088d8;
 }
 
 .tile_32 {
-    background-color: #0086bd;
+    -fx-background-color: #0086bd;
 }
 
 .tile_64 {
-    background-color: #0082a0;
+    -fx-background-color: #0082a0;
 }
 
 .tile_128 {
-    background-color: #007d82;
+    -fx-background-color: #007d82;
 }
 
 .tile_256 {
