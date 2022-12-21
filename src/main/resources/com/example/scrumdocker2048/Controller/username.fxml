@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="191.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scrumdocker2048.Controller.UsernameController">
+<AnchorPane prefHeight="191.0" prefWidth="335.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scrumdocker2048.Controller.UsernameController">
    <children>
       <Label layoutX="120.0" layoutY="14.0" text="2048">
          <font>
