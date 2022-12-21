@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class Database {
 
     private String host = "localhost";
-    private String user = "4ahitn";
-    private String db = "4ahitn";
-    private String password = "4ahitn";
+    private String user = "2048";
+    private String db = "2048";
+    private String password = "2048";
     private String driverType = "mysql";
     private int port = 4306;
     private static Connection connection = null;
@@ -38,7 +38,6 @@ public class Database {
     }
 
     public static Connection getConnection() {
-
         if (connection == null) {
             new Database();
         }

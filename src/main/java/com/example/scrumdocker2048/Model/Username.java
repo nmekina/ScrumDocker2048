@@ -8,38 +8,29 @@ import java.sql.*;
 public class Username {
     String username;
     String password;
-    Timestamp date;
+    Date date;
     Integer highscore;
     Integer gamesPlayed;
 
     public Username(ResultSet results) throws SQLException {
         this.username = results.getString("name");
         this.password = results.getString("password");
-        this.date = results.getTimestamp("date");
-        this.highscore = results.getInt("highscore");
-        this.gamesPlayed = results.getInt("gamesPlayed");
+        this.date = results.getDate("timestamp");
     }
 
-    public Username(String username, String password, Timestamp date, Integer highscore, Integer gamesPlayed) {
+    public Username(String username, String password, Date date) {
         this.username = username;
         this.password = password;
         this.date = date;
-        this.highscore = highscore;
-        this.gamesPlayed = gamesPlayed;
     }
 
     public static ObservableList<Username> getList() {
         ObservableList<Username> list = FXCollections.observableArrayList();
-        Username username1 = new Username("Nico", "password", new Timestamp(2000), 999, 1);
-        Username username2 = new Username("Leini", "password", new Timestamp(3000), 123, 4);
-        list.add(username1);
-        list.add(username2);
-        /*
         Connection c = Database.getConnection();
 
         try {
             Statement s = c.createStatement();
-            ResultSet results = s.executeQuery("SELECT * FROM t_user u INNER JOIN t_statistics s ON u.userid = s.userid;");
+            ResultSet results = s.executeQuery("SELECT * FROM t_user u;");
 
             while (results.next()) {
                 list.add(new Username(results));
@@ -48,12 +39,23 @@ public class Username {
             results.close();
             s.close();
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-         */
+
         return list;
+    }
+
+    public void insertUser() {
+        Connection c = Database.getConnection();
+
+        try {
+            PreparedStatement statement = c.prepareStatement("INSERT INTO t_user (name, password, timestamp) VALUES ('" + this.username + "', '" + this.password + "', '" + this.date + "');");
+            statement.executeUpdate();
+            System.out.println("User wurde zu Datenbank hinzugefuegt!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getUsername() {
@@ -72,8 +74,32 @@ public class Username {
         this.password = password;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Integer getHighscore() {
+        return highscore;
+    }
+
+    public void setHighscore(Integer highscore) {
+        this.highscore = highscore;
+    }
+
+    public Integer getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(Integer gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
     @Override
     public String toString() {
-        return username;
+        return username + " - " + highscore + " - " + gamesPlayed;
     }
 }

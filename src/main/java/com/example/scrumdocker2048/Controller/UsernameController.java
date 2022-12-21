@@ -15,10 +15,8 @@ import javafx.scene.input.DragEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 
 public class UsernameController extends AbstractController {
 
@@ -29,7 +27,7 @@ public class UsernameController extends AbstractController {
     private TextField txtPassword;
 
     @FXML
-    private ChoiceBox<Username> dropdownUsername;
+    private ChoiceBox<String> dropdownUsername;
 
     @FXML
     private Button btnPlay;
@@ -40,17 +38,24 @@ public class UsernameController extends AbstractController {
     @FXML
     private Button btnClose;
 
+    private ObservableList<String> list = FXCollections.observableArrayList();
+
     public void initialize() {
         this.txtUsername.setPromptText("username");
         this.txtPassword.setPromptText("password");
-        this.dropdownUsername.setItems(Username.getList());
-        dropdownUsername.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            // if items of the list are changed
-            public void changed(ObservableValue ov, Number value, Number new_value) {
-                // text for the label to the selected item
-                txtUsername.setText(dropdownUsername.getItems().get(new_value.intValue()) + "");
-            }
-        });
+        for (Username username: Username.getList()) {
+            list.add(username.getUsername());
+        }
+        if (list.size() > 0) {
+            this.dropdownUsername.setItems(list);
+            dropdownUsername.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+                // if items of the list are changed
+                public void changed(ObservableValue ov, Number value, Number new_value) {
+                    // text for the label to the selected item
+                    txtUsername.setText(dropdownUsername.getItems().get(new_value.intValue()) + "");
+                }
+            });
+        }
     }
 
     @FXML
@@ -74,7 +79,28 @@ public class UsernameController extends AbstractController {
 
     @FXML
     void btnPlayPressed(ActionEvent event) {
-        if ((!txtUsername.getText().equals("")) && (!txtPassword.getText().equals(""))) {
+        boolean check = true;
+
+        for (Username user : Username.getList()) {
+            if (txtUsername.getText().equals(user.getUsername())) {
+                if (txtPassword.getText().equals(user.getPassword())) {
+                    Stage stage = (Stage) btnPlay.getScene().getWindow();
+                    stage.close();
+                    try {
+                        PlayfieldController c = this.loadFxmlFile("hello-view.fxml", "Spiel",
+                                ((Button) event.getSource()).getScene().getWindow(), PlayfieldController.class);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                check = false;
+            }
+        }
+        if (check) {
+            // Insert new User in Database
+            Username username = new Username(txtUsername.getText(), txtPassword.getText(), Date.valueOf(LocalDate.now()));
+            username.insertUser();
+
             Stage stage = (Stage) btnPlay.getScene().getWindow();
             stage.close();
             try {
