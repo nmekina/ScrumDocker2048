@@ -9,7 +9,7 @@ public class TilePane extends Pane {
 
     private int value = 0;
 
-    TilePane(int value){
+    public TilePane(int value){
         setValue(value);
         if (value <= 2048) {
             this.getStyleClass().add("tile_" + value);
