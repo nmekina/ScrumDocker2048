@@ -3,9 +3,12 @@ package com.example.scrumdocker2048.Controller;
 import com.example.scrumdocker2048.Model.Position;
 import com.example.scrumdocker2048.Model.TilePane;
 import javafx.animation.AnimationTimer;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -20,6 +23,7 @@ import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 
 public class PlayfieldController extends AbstractController {
 
@@ -84,21 +88,50 @@ public class PlayfieldController extends AbstractController {
                 case RIGHT -> System.out.println("right");
                 default -> System.out.println("no available action");
             }
-            insertingTileInPlayfield();
+            try {
+                insertingTileInPlayfield();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         }
     }
 
-    private void insertingTileInPlayfield() {
-        TilePane tp;
-        if (Math.random() > 0.89) {
-            tp = new TilePane(4);
-        } else {
-            tp = new TilePane(2);
-        }
+    private void insertingTileInPlayfield() throws IOException {
+        boolean placeistaken = false;
+        boolean over = false;
+        ObservableList<Node> children = gridPlayfield.getChildren();
+        boolean isCellNull = true;
         int x = (int) (Math.random() * 4);
         int y = (int) (Math.random() * 4);
-        gridPlayfield.add(tp, x, y);
+        TilePane tp=null;
+            try {
+                if (Math.random() > 0.89) {
+                    tp = new TilePane(4);
+                } else {
+                    tp = new TilePane(2);
+                }
+                for (Node child : children) {
+                    if (child instanceof Pane) {
+                        if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
+                            placeistaken = true;
+                        }
+                    }
+                }
+
+            }catch (StackOverflowError sfe){
+                over = true;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Alarm");
+                alert.setHeaderText("An Error Occurred");
+                alert.setContentText("An error has occurred. Please try again later.");
+                alert.show();
+            }
+            if (placeistaken && !over){
+                insertingTileInPlayfield();
+            }else if (!over){
+                gridPlayfield.add(tp, x, y);
+            }
     }
 
 
