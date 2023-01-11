@@ -43,13 +43,7 @@ public class PlayfieldController extends AbstractController {
     public Label labelHighestScore;
 
 
-
-
-
-
-
-
-    public void initialize(){
+    public void initialize() {
         this.gridPlayfield.addEventHandler(MouseEvent.MOUSE_RELEASED, startEventhandler);
     }
 
@@ -57,9 +51,9 @@ public class PlayfieldController extends AbstractController {
     @FXML
     public void btnBackPressed(ActionEvent actionEvent) {
         try {
-           loadFxmlFile( "startmenue.fxml",
+            loadFxmlFile("startmenue.fxml",
                     "Startmenue",
-                     labelName.getScene().getWindow(),
+                    labelName.getScene().getWindow(),
                     StartmenueController.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -69,7 +63,7 @@ public class PlayfieldController extends AbstractController {
     @FXML
     public void btnNewGamePressed(ActionEvent actionEvent) {
         try {
-            loadFxmlFile( "playfield.fxml",
+            loadFxmlFile("playfield.fxml",
                     "2048 - The Game",
                     labelName.getScene().getWindow(),
                     PlayfieldController.class);
@@ -78,7 +72,7 @@ public class PlayfieldController extends AbstractController {
         }
     }
 
-    public class KeyActionEventHandler implements EventHandler<KeyEvent>{
+    public class KeyActionEventHandler implements EventHandler<KeyEvent> {
 
         @Override
         public void handle(KeyEvent event) {
@@ -90,13 +84,23 @@ public class PlayfieldController extends AbstractController {
                 case RIGHT -> System.out.println("right");
                 default -> System.out.println("no available action");
             }
-            TilePane tp = new TilePane(4);
-            int x = (int) (Math.random() * 4);
-            int y = (int) (Math.random() * 4);
-            gridPlayfield.add(tp, x, y);
+            insertingTileInPlayfield();
 
         }
     }
+
+    private void insertingTileInPlayfield() {
+        TilePane tp;
+        if (Math.random() > 0.89) {
+            tp = new TilePane(4);
+        } else {
+            tp = new TilePane(2);
+        }
+        int x = (int) (Math.random() * 4);
+        int y = (int) (Math.random() * 4);
+        gridPlayfield.add(tp, x, y);
+    }
+
 
     public class StartEventHandler implements EventHandler<MouseEvent> {
 

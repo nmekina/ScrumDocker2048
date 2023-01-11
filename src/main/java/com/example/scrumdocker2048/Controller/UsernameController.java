@@ -85,7 +85,7 @@ public class UsernameController extends AbstractController {
                     Stage stage = (Stage) btnPlay.getScene().getWindow();
                     stage.close();
                     try {
-                        PlayfieldController c = this.loadFxmlFile("hello-view.fxml", "Spiel",
+                        PlayfieldController c = this.loadFxmlFile("playfield.fxml", "Spiel",
                                 ((Button) event.getSource()).getScene().getWindow(), PlayfieldController.class);
                     } catch (IOException e) {
                         e.printStackTrace();
