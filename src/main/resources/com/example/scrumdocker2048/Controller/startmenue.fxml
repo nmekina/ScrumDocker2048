@@ -15,25 +15,25 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <MenuBar layoutX="14.0" layoutY="14.0">
+      <MenuBar>
          <menus>
             <Menu mnemonicParsing="false" text="Setings">
                <items>
-                  <MenuItem fx:id="settingsbtn" mnemonicParsing="false" onAction="#settingsbtnac" text="Settings" />
+                  <MenuItem fx:id="MenueBarSettings" mnemonicParsing="false" onAction="#MenueBarSettingsClicked" text="Settings" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem fx:id="helpbtn" mnemonicParsing="false" onAction="#helpbtnac" text="Game Help" />
+                  <MenuItem fx:id="MenueBarHelp" mnemonicParsing="false" onAction="#MenueBarHelpClicked" text="Game Help" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Highscore">
                <items>
-                  <MenuItem fx:id="highscoreac" mnemonicParsing="false" onAction="#highscorebtnac" text="Highscore" />
+                  <MenuItem fx:id="MenueBarHighscore" mnemonicParsing="false" onAction="#MenueBarHighscoreClicked" text="Highscore" />
                </items>
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="startgamebtn" layoutX="116.0" layoutY="200.0" mnemonicParsing="false" onAction="#startgamebtnac" text="Start the game" />
+      <Button fx:id="startgamebtn" layoutX="116.0" layoutY="200.0" mnemonicParsing="false" onAction="#ButtonStartGameClicked" text="Start the game" />
    </children>
 </AnchorPane>
