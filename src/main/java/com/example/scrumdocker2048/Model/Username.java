@@ -58,18 +58,22 @@ public class Username {
         }
     }
 
-    public void updateHighscore() {
+    public void updateHighscore(Highscore highscore) {
         Connection c = Database.getConnection();
 
         try {
+            PreparedStatement statement;
             if (this.highscore != 0) {
                 this.gamesPlayed += 1;
-                PreparedStatement statement = c.prepareStatement("UPDATE t_statistics SET highscore = " + this.highscore + ", gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
-                statement.executeUpdate();
+                if (highscore.getHighscore() > this.highscore) {
+                    statement = c.prepareStatement("UPDATE t_statistics SET highscore = " + this.highscore + ", gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
+                } else {
+                    statement = c.prepareStatement("UPDATE t_statistics SET gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
+                }
             } else {
-                PreparedStatement statement = c.prepareStatement("INSERT INTO t_statistics(userid, highscore, gamesPlayed) VALUES (" + this.id + ", " + this.highscore + ", " + this.gamesPlayed + ");");
-                statement.executeUpdate();
+                statement = c.prepareStatement("INSERT INTO t_statistics(userid, highscore, gamesPlayed) VALUES (" + this.id + ", " + this.highscore + ", " + this.gamesPlayed + ");");
             }
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
