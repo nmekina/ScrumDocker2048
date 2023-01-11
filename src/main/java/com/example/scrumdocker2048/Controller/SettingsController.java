@@ -19,9 +19,6 @@ public class SettingsController extends AbstractController {
     private Button btnSave;
 
     @FXML
-    private Button btnHighscore;
-
-    @FXML
     private Label label_headline;
 
     Settings settings = new Settings();
@@ -36,28 +33,10 @@ public class SettingsController extends AbstractController {
     public void initialize() {
 
         label_headline.setText("Settings");
-        btnHighscore.setText("Highscore");
         btnSave.setText("Save");
         labelColorPickerPlayfield.setText("Color for Playfield");
         labelColorPickerTiles.setText("Color for Tiles");
 
-    }
-
-    /**
-     * @param event
-     * @throws IOException schaltet auf Highscore.fxml um
-     */
-    @FXML
-    void btnHighscoreClick(ActionEvent event) throws IOException {
-        Stage stage = (Stage) btnHighscore.getScene().getWindow();
-        stage.close();
-        try {
-            StartmenueController c = this.loadFxmlFile("startmenue.fxml", "Spiel",
-                    ((Button) event.getSource()).getScene().getWindow(), StartmenueController.class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

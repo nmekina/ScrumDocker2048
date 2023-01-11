@@ -1,6 +1,5 @@
 package com.example.scrumdocker2048.Controller;
 
-import com.example.scrumdocker2048.Model.Database;
 import com.example.scrumdocker2048.Model.Username;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,12 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.DragEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
-import java.time.LocalDate;
 
 public class UsernameController extends AbstractController {
 
@@ -96,7 +92,7 @@ public class UsernameController extends AbstractController {
         }
         if (check) {
             // Insert new User in Database
-            Username username = new Username(txtUsername.getText(), txtPassword.getText(), Date.valueOf(LocalDate.now()));
+            Username username = new Username(txtUsername.getText(), txtPassword.getText());
             username.insertUser();
 
             Stage stage = (Stage) btnPlay.getScene().getWindow();
