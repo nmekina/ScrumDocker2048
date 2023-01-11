@@ -8,20 +8,17 @@ import java.sql.*;
 public class Username {
     String username;
     String password;
-    Date date;
     Integer highscore;
     Integer gamesPlayed;
 
     public Username(ResultSet results) throws SQLException {
         this.username = results.getString("name");
         this.password = results.getString("password");
-        this.date = results.getDate("timestamp");
     }
 
     public Username(String username, String password, Date date) {
         this.username = username;
         this.password = password;
-        this.date = date;
     }
 
     public static ObservableList<Username> getList() {
@@ -50,7 +47,7 @@ public class Username {
         Connection c = Database.getConnection();
 
         try {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO t_user (name, password, timestamp) VALUES ('" + this.username + "', '" + this.password + "', '" + this.date + "');");
+            PreparedStatement statement = c.prepareStatement("INSERT INTO t_user (name, password) VALUES ('" + this.username + "', '" + this.password + "');");
             statement.executeUpdate();
             System.out.println("User wurde zu Datenbank hinzugefuegt!");
         } catch (SQLException e) {
@@ -72,14 +69,6 @@ public class Username {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Integer getHighscore() {

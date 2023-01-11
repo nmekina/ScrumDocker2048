@@ -49,9 +49,7 @@ public class UsernameController extends AbstractController {
         if (list.size() > 0) {
             this.dropdownUsername.setItems(list);
             dropdownUsername.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-                // if items of the list are changed
                 public void changed(ObservableValue ov, Number value, Number new_value) {
-                    // text for the label to the selected item
                     txtUsername.setText(dropdownUsername.getItems().get(new_value.intValue()) + "");
                 }
             });
