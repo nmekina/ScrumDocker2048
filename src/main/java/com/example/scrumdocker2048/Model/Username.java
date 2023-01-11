@@ -6,17 +6,21 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class Username {
-    String username;
-    String password;
-    Integer highscore;
-    Integer gamesPlayed;
+    private Integer id;
+    private String username;
+    private String password;
+    private Integer highscore;
+    private Integer gamesPlayed;
 
     public Username(ResultSet results) throws SQLException {
+        this.id = results.getInt("u.userid");
         this.username = results.getString("name");
         this.password = results.getString("password");
+        this.highscore = results.getInt("highscore");
+        this.gamesPlayed = results.getInt("gamesPlayed");
     }
 
-    public Username(String username, String password, Date date) {
+    public Username(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -27,7 +31,7 @@ public class Username {
 
         try {
             Statement s = c.createStatement();
-            ResultSet results = s.executeQuery("SELECT * FROM t_user u;");
+            ResultSet results = s.executeQuery("SELECT * FROM t_user u LEFT OUTER JOIN t_statistics s on u.userid = s.userid;");
 
             while (results.next()) {
                 list.add(new Username(results));
@@ -49,7 +53,23 @@ public class Username {
         try {
             PreparedStatement statement = c.prepareStatement("INSERT INTO t_user (name, password) VALUES ('" + this.username + "', '" + this.password + "');");
             statement.executeUpdate();
-            System.out.println("User wurde zu Datenbank hinzugefuegt!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateHighscore() {
+        Connection c = Database.getConnection();
+
+        try {
+            if (this.highscore != 0) {
+                this.gamesPlayed += 1;
+                PreparedStatement statement = c.prepareStatement("UPDATE t_statistics SET highscore = " + this.highscore + ", gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
+                statement.executeUpdate();
+            } else {
+                PreparedStatement statement = c.prepareStatement("INSERT INTO t_statistics(userid, highscore, gamesPlayed) VALUES (" + this.id + ", " + this.highscore + ", " + this.gamesPlayed + ");");
+                statement.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,7 +104,7 @@ public class Username {
     }
 
     public void setGamesPlayed(Integer gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
+        this.gamesPlayed += 1;
     }
 
     @Override
