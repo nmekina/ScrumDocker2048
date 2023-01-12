@@ -75,9 +75,10 @@ public class UsernameController extends AbstractController {
     void btnPlayPressed(ActionEvent event) {
         boolean check = true;
 
+
         for (Username user : Username.getList()) {
             if (txtUsername.getText().equals(user.getUsername())) {
-                if (txtPassword.getText().equals(user.getPassword())) {
+                if (PasswordHasher.hashPassword(txtPassword.getText()).equals(user.getPassword())) {
                     Stage stage = (Stage) btnPlay.getScene().getWindow();
                     stage.close();
                     try {
