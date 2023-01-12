@@ -2,6 +2,7 @@ package com.example.scrumdocker2048.Controller;
 
 import com.example.scrumdocker2048.Model.Position;
 import com.example.scrumdocker2048.Model.TilePane;
+import com.example.scrumdocker2048.Model.checkConditions;
 import javafx.animation.AnimationTimer;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -104,34 +105,40 @@ public class PlayfieldController extends AbstractController {
         boolean isCellNull = true;
         int x = (int) (Math.random() * 4);
         int y = (int) (Math.random() * 4);
-        TilePane tp=null;
-            try {
-                if (Math.random() > 0.89) {
-                    tp = new TilePane(4);
-                } else {
-                    tp = new TilePane(2);
-                }
-                for (Node child : children) {
-                    if (child instanceof Pane) {
-                        if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
-                            placeistaken = true;
-                        }
+        TilePane tp = null;
+        try {
+            if (Math.random() > 0.89) {
+                tp = new TilePane(4);
+            } else {
+                tp = new TilePane(2);
+            }
+            for (Node child : children) {
+                if (child instanceof TilePane tilePane) {
+                    if (tilePane.getValue() == 2048) {
+                        over = true;
+                    }
+                    if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
+                        placeistaken = true;
                     }
                 }
+            }
 
-            }catch (StackOverflowError sfe){
-                over = true;
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Alarm");
-                alert.setHeaderText("An Error Occurred");
-                alert.setContentText("An error has occurred. Please try again later.");
-                alert.show();
-            }
-            if (placeistaken && !over){
-                insertingTileInPlayfield();
-            }else if (!over){
-                gridPlayfield.add(tp, x, y);
-            }
+        } catch (StackOverflowError sfe) {
+            over = true;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Alarm");
+            alert.setHeaderText("An Error Occurred");
+            alert.setContentText("An error has occurred. Please try again later.");
+            alert.show();
+        }
+
+        if (placeistaken && !over) {
+            insertingTileInPlayfield();
+        } else if (!over) {
+            gridPlayfield.add(tp, x, y);
+        } else {
+            System.out.println("Gewonnen!");
+        }
     }
 
 
