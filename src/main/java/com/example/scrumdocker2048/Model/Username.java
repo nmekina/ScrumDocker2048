@@ -1,6 +1,7 @@
 package com.example.scrumdocker2048.Model;
 
 import com.example.scrumdocker2048.Controller.PasswordHasher;
+import com.example.scrumdocker2048.Controller.UsernameController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,8 +14,10 @@ public class Username {
     private Integer highscore;
     private Integer gamesPlayed;
 
+    UsernameController usernameController = new UsernameController();
+
     public Username(ResultSet results) throws SQLException {
-        this.id = results.getInt("u.userid");
+        this.id = results.getInt("userid");
         this.username = results.getString("name");
         this.password = results.getString("password");
         this.highscore = results.getInt("highscore");
@@ -25,6 +28,29 @@ public class Username {
         this.username = username;
         this.password = password;
     }
+
+
+    public Username() {
+
+    }
+
+    public Integer getHighscore() {
+        Connection c = Database.getConnection();
+
+        try {
+            Statement s = c.createStatement();
+            ResultSet resultSet = s.executeQuery("SELECT highscore AS highscore FROM t_statistics INNER JOIN t_user tu on t_statistics.userid = tu.userid WHERE name = '" + usernameController.getName() + "';");
+            if (resultSet.next()) {
+                setHighscore(resultSet.getInt("highscore"));
+            }
+            resultSet.close();
+            s.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return highscore;
+    }
+
 
     public static ObservableList<Username> getList() {
         ObservableList<Username> list = FXCollections.observableArrayList();
@@ -96,13 +122,6 @@ public class Username {
         this.password = password;
     }
 
-    public Integer getHighscore() {
-        return highscore;
-    }
-
-    public void setHighscore(Integer highscore) {
-        this.highscore = highscore;
-    }
 
     public Integer getGamesPlayed() {
         return gamesPlayed;
@@ -110,6 +129,10 @@ public class Username {
 
     public void setGamesPlayed(Integer gamesPlayed) {
         this.gamesPlayed += 1;
+    }
+
+    public void setHighscore(Integer highscore) {
+        this.highscore = highscore;
     }
 
     @Override

@@ -58,7 +58,7 @@ public class StartmenueController extends AbstractController {
 
     public void ButtonStartGameClicked(ActionEvent actionEvent) throws IOException {
         try {
-             UsernameController u = this.loadFxmlFile("username.fxml", "Spiel",
+            UsernameController u = this.loadFxmlFile("username.fxml", "Spiel",
                     ((Button) actionEvent.getSource()).getScene().getWindow(), UsernameController.class);
 
         } catch (IOException e) {

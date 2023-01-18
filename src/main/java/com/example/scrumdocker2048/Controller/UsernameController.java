@@ -35,19 +35,31 @@ public class UsernameController extends AbstractController {
     @FXML
     private Button btnClose;
 
+    private static String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        UsernameController.name = name;
+    }
+
     private ObservableList<String> list = FXCollections.observableArrayList();
 
     public void initialize() {
         this.txtUsername.setPromptText("username");
         this.txtPassword.setPromptText("password");
-        for (Username username: Username.getList()) {
+        for (Username username : Username.getList()) {
             list.add(username.getUsername());
         }
         if (list.size() > 0) {
             this.dropdownUsername.setItems(list);
             dropdownUsername.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
                 public void changed(ObservableValue ov, Number value, Number new_value) {
                     txtUsername.setText(dropdownUsername.getItems().get(new_value.intValue()) + "");
+                    setName(dropdownUsername.getItems().get(Integer.parseInt(new_value.intValue() + "")));
                 }
             });
         }
