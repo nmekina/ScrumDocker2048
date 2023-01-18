@@ -106,7 +106,7 @@ public class PlayfieldController extends AbstractController {
         int x = (int) (Math.random() * 4);
         int y = (int) (Math.random() * 4);
         TilePane tp = null;
-        try {
+        System.out.println(gridPlayfield.getChildren().size());
             if (Math.random() > 0.89) {
                 tp = new TilePane(4);
             } else {
@@ -120,10 +120,10 @@ public class PlayfieldController extends AbstractController {
                     if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
                         placeistaken = true;
                     }
+
                 }
             }
-
-        } catch (StackOverflowError sfe) {
+        if (gridPlayfield.getChildren().size()==16) {
             over = true;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Alarm");
