@@ -229,7 +229,7 @@ public class PlayfieldController extends AbstractController {
         }
 
         private void newPlaceTile(Position position, Position nextPosition) {
-            System.out.println(position + " "+   nextPosition);
+            System.out.println(position + " "+   nextPosition + "232");
             ObservableList<TilePane> tiles = getTiles();
             TilePane removeTile = null;
             for (TilePane tile : tiles) {
@@ -237,7 +237,7 @@ public class PlayfieldController extends AbstractController {
                     removeTile = tile;
                 }
             }
-            gridPlayfield.add(new TilePane(removeTile.getValue()), nextPosition.getX(),nextPosition.getY());
+            gridPlayfield.add(new TilePane(removeTile.getValue()), nextPosition.getY(),nextPosition.getX());
             gridPlayfield.getChildren().remove(removeTile);
         }
     }
@@ -274,7 +274,7 @@ public class PlayfieldController extends AbstractController {
                     TilePane tile1 = (TilePane) children.get(i);
                     TilePane tile2 = (TilePane) children.get(i + 1);
                 if (tile1.getValue()==(tile2.getValue())) {
-                    System.out.println("weiter gehts");
+                    System.out.println("weiter gehts  277");
                 }
 
             }
@@ -290,7 +290,7 @@ public class PlayfieldController extends AbstractController {
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
-            System.out.println(gridPlayfield.getChildren().size());
+            System.out.println(gridPlayfield.getChildren().size() + "293");
             gridPlayfield.add(tp, x, y);
         } else {
             System.out.println("Gewonnen!");
