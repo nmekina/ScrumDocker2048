@@ -106,35 +106,47 @@ public class PlayfieldController extends AbstractController {
         int x = (int) (Math.random() * 4);
         int y = (int) (Math.random() * 4);
         TilePane tp = null;
-        System.out.println(gridPlayfield.getChildren().size());
-            if (Math.random() > 0.89) {
-                tp = new TilePane(4);
-            } else {
-                tp = new TilePane(2);
-            }
-            for (Node child : children) {
-                if (child instanceof TilePane tilePane) {
-                    if (tilePane.getValue() == 2048) {
-                        over = true;
-                    }
-                    if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
-                        placeistaken = true;
-                    }
-
+        if (Math.random() > 0.89) {
+            tp = new TilePane(4);
+        } else {
+            tp = new TilePane(2);
+        }
+        for (Node child : children) {
+            if (child instanceof TilePane tilePane) {
+                if (tilePane.getValue() == 2048) {
+                    over = true;
                 }
+                if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
+                    placeistaken = true;
+                }
+
+
             }
-        if (gridPlayfield.getChildren().size()==16) {
-            over = true;
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Alarm");
-            alert.setHeaderText("An Error Occurred");
-            alert.setContentText("An error has occurred. Please try again later.");
-            alert.show();
         }
 
+        if (gridPlayfield.getChildren().size() == 16) {
+            for (int i = 0; i <= 14; i++) {
+                if (children.get(i) instanceof TilePane && children.get(i+1) instanceof TilePane) {
+                    TilePane tile1 = (TilePane) children.get(i);
+                    TilePane tile2 = (TilePane) children.get(i + 1);
+                if (tile1.getValue()==(tile2.getValue())) {
+                    System.out.println("weiter gehts");
+                }
+
+            }
+        }
+        }
+       /* over = true;
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Alarm");
+        alert.setHeaderText("An Error Occurred");
+        alert.setContentText("An error has occurred. Please try again later.");
+        alert.show();
+        */
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
+            System.out.println(gridPlayfield.getChildren().size());
             gridPlayfield.add(tp, x, y);
         } else {
             System.out.println("Gewonnen!");
