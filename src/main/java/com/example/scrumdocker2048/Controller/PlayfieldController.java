@@ -3,6 +3,8 @@ package com.example.scrumdocker2048.Controller;
 import com.example.scrumdocker2048.Model.Position;
 import com.example.scrumdocker2048.Model.TilePane;
 import javafx.collections.*;
+import com.example.scrumdocker2048.Model.checkConditions;
+import javafx.animation.AnimationTimer;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,13 +14,17 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Window;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -244,32 +250,50 @@ public class PlayfieldController extends AbstractController {
         int x = (int) (Math.random() * 4);
         int y = (int) (Math.random() * 4);
         TilePane tp = null;
-        try {
-            if (Math.random() > 0.89) {
-                tp = new TilePane(4);
-            } else {
-                tp = new TilePane(2);
-            }
-            for (Node child : children) {
-                if (child instanceof Pane) {
-                    if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
-                        placeistaken = true;
-                    }
-                }
-            }
-
-        } catch (StackOverflowError sfe) {
-            over = true;
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Alarm");
-            alert.setHeaderText("An Error Occurred");
-            alert.setContentText("An error has occurred. Please try again later.");
-            alert.show();
+        if (Math.random() > 0.89) {
+            tp = new TilePane(4);
+        } else {
+            tp = new TilePane(2);
         }
+        for (Node child : children) {
+            if (child instanceof TilePane tilePane) {
+                if (tilePane.getValue() == 2048) {
+                    over = true;
+                }
+                if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
+                    placeistaken = true;
+                }
+
+
+            }
+        }
+
+        if (gridPlayfield.getChildren().size() == 16) {
+            for (int i = 0; i <= 14; i++) {
+                if (children.get(i) instanceof TilePane && children.get(i+1) instanceof TilePane) {
+                    TilePane tile1 = (TilePane) children.get(i);
+                    TilePane tile2 = (TilePane) children.get(i + 1);
+                if (tile1.getValue()==(tile2.getValue())) {
+                    System.out.println("weiter gehts");
+                }
+
+            }
+        }
+        }
+       /* over = true;
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Alarm");
+        alert.setHeaderText("An Error Occurred");
+        alert.setContentText("An error has occurred. Please try again later.");
+        alert.show();
+        */
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
+            System.out.println(gridPlayfield.getChildren().size());
             gridPlayfield.add(tp, x, y);
+        } else {
+            System.out.println("Gewonnen!");
         }
     }
 

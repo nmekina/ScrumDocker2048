@@ -1,5 +1,6 @@
 package com.example.scrumdocker2048.Model;
 
+import com.example.scrumdocker2048.Controller.PasswordHasher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -51,7 +52,7 @@ public class Username {
         Connection c = Database.getConnection();
 
         try {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO t_user (name, password) VALUES ('" + this.username + "', '" + this.password + "');");
+            PreparedStatement statement = c.prepareStatement("INSERT INTO t_user (name, password) VALUES ('" + this.username + "', '" + PasswordHasher.hashPassword(this.password) + "');");
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

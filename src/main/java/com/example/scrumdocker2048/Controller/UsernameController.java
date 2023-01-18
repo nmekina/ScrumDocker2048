@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,7 +21,7 @@ public class UsernameController extends AbstractController {
     private TextField txtUsername;
 
     @FXML
-    private TextField txtPassword;
+    private PasswordField txtPassword;
 
     @FXML
     private ChoiceBox<String> dropdownUsername;
@@ -75,9 +76,10 @@ public class UsernameController extends AbstractController {
     void btnPlayPressed(ActionEvent event) {
         boolean check = true;
 
+
         for (Username user : Username.getList()) {
             if (txtUsername.getText().equals(user.getUsername())) {
-                if (txtPassword.getText().equals(user.getPassword())) {
+                if (PasswordHasher.hashPassword(txtPassword.getText()).equals(user.getPassword())) {
                     Stage stage = (Stage) btnPlay.getScene().getWindow();
                     stage.close();
                     try {
