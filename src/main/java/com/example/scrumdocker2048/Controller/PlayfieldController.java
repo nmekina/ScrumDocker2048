@@ -2,6 +2,7 @@ package com.example.scrumdocker2048.Controller;
 
 import com.example.scrumdocker2048.Model.Position;
 import com.example.scrumdocker2048.Model.TilePane;
+import com.example.scrumdocker2048.Model.Username;
 import javafx.collections.*;
 import com.example.scrumdocker2048.Model.checkConditions;
 import javafx.animation.AnimationTimer;
@@ -31,6 +32,7 @@ import java.util.*;
 public class PlayfieldController extends AbstractController {
 
     public ColumnConstraints Grridpane;
+    public Label labelCurrent;
     KeyActionEventHandler keyActionEventHandler = new KeyActionEventHandler();
     StartEventHandler startEventhandler = new StartEventHandler();
     @FXML
@@ -48,12 +50,17 @@ public class PlayfieldController extends AbstractController {
     public Label labelHighscore;
     @FXML
     public Label labelHighestScore;
+    Username username = new Username();
 
+    UsernameController usernameController = new UsernameController();
 
     public void initialize() throws IOException {
         this.gridPlayfield.addEventHandler(MouseEvent.MOUSE_RELEASED, startEventhandler);
         insertingTileInPlayfield();
         insertingTileInPlayfield();
+        labelCurrent.setText(usernameController.getName());
+        labelHighestScore.setText(String.valueOf(username.getHighscore()));
+
     }
 
 
@@ -83,22 +90,24 @@ public class PlayfieldController extends AbstractController {
 
     public class KeyActionEventHandler implements EventHandler<KeyEvent> {
 
+
         @Override
         public void handle(KeyEvent event) {
+
             KeyCode key = event.getCode();
-           ObservableList<TilePane> tiles = getTiles();
+            ObservableList<TilePane> tiles = getTiles();
             Position currentPosition;
             Position moveNextPosition = null;
             switch (key) {
                 case UP: // row -
                     System.out.println("up");
 
-                    for (int row = 0; row < gridPlayfield.getRowCount(); row ++) {
+                    for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
                             currentPosition = new Position(col, row);
                             tiles = getTiles();
-                            for (TilePane tile : tiles){
-                                if (Position.comparePositions(currentPosition, tile.getPosition())){
+                            for (TilePane tile : tiles) {
+                                if (Position.comparePositions(currentPosition, tile.getPosition())) {
                                     moveNextPosition = new Position(tile.getPosition().getX() - 1, tile.getPosition().getY());
                                 }
                             }
@@ -134,15 +143,15 @@ public class PlayfieldController extends AbstractController {
                 case DOWN:// row +
                     System.out.println("down");
 
-                    for (int row = 0; row < gridPlayfield.getRowCount(); row ++) {
+                    for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
                             currentPosition = new Position(col, row);
-                            for (TilePane tile : tiles){
-                                if (Position.comparePositions(currentPosition, tile.getPosition())){
+                            for (TilePane tile : tiles) {
+                                if (Position.comparePositions(currentPosition, tile.getPosition())) {
                                     moveNextPosition = new Position(tile.getPosition().getX() + 1, tile.getPosition().getY());
-                                    if(tile.getPosition().getX() > 0){
-                                        if (checkPosIfMoveOn(moveNextPosition)){
-                                            newPlaceTile(currentPosition,moveNextPosition);
+                                    if (tile.getPosition().getX() > 0) {
+                                        if (checkPosIfMoveOn(moveNextPosition)) {
+                                            newPlaceTile(currentPosition, moveNextPosition);
                                         }
 
                                     }
@@ -154,15 +163,15 @@ public class PlayfieldController extends AbstractController {
                 case LEFT: // col -
                     System.out.println("left");
 
-                    for (int row = 0; row < gridPlayfield.getRowCount(); row ++) {
+                    for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
                             currentPosition = new Position(col, row);
-                            for (TilePane tile : tiles){
-                                if (Position.comparePositions(currentPosition, tile.getPosition())){
-                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY()-1);
-                                    if(tile.getPosition().getX() > 0){
-                                        if (checkPosIfMoveOn(moveNextPosition)){
-                                            newPlaceTile(currentPosition,moveNextPosition);
+                            for (TilePane tile : tiles) {
+                                if (Position.comparePositions(currentPosition, tile.getPosition())) {
+                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY() - 1);
+                                    if (tile.getPosition().getX() > 0) {
+                                        if (checkPosIfMoveOn(moveNextPosition)) {
+                                            newPlaceTile(currentPosition, moveNextPosition);
                                         }
 
                                     }
@@ -173,15 +182,15 @@ public class PlayfieldController extends AbstractController {
                 case RIGHT: // col +
                     System.out.println("right");
 
-                    for (int row = 0; row < gridPlayfield.getRowCount(); row ++) {
+                    for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
                             currentPosition = new Position(col, row);
-                            for (TilePane tile : tiles){
-                                if (Position.comparePositions(currentPosition, tile.getPosition())){
-                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY()+1);
-                                    if(tile.getPosition().getX() > 0){
-                                        if (checkPosIfMoveOn(moveNextPosition)){
-                                            newPlaceTile(currentPosition,moveNextPosition);
+                            for (TilePane tile : tiles) {
+                                if (Position.comparePositions(currentPosition, tile.getPosition())) {
+                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY() + 1);
+                                    if (tile.getPosition().getX() > 0) {
+                                        if (checkPosIfMoveOn(moveNextPosition)) {
+                                            newPlaceTile(currentPosition, moveNextPosition);
                                         }
 
                                     }
@@ -203,8 +212,8 @@ public class PlayfieldController extends AbstractController {
         private boolean checkPosIfMoveOn(Position moveNextPosition) {
             ObservableList<TilePane> tiles = getTiles();
             boolean returnValue = true;
-            for (TilePane tile : tiles){
-                if (Position.comparePositions(moveNextPosition, tile.getPosition())){
+            for (TilePane tile : tiles) {
+                if (Position.comparePositions(moveNextPosition, tile.getPosition())) {
                     returnValue = false;
                 }
             }
@@ -212,11 +221,11 @@ public class PlayfieldController extends AbstractController {
         }
 
 
-        private ObservableList<TilePane> getTiles(){
+        private ObservableList<TilePane> getTiles() {
             ObservableList<Node> children = gridPlayfield.getChildren();
             ObservableList<TilePane> tiles = FXCollections.observableArrayList();
-            for (Node child : children){
-                if (child instanceof TilePane){
+            for (Node child : children) {
+                if (child instanceof TilePane) {
                     tiles.add((TilePane) child);
                 }
             }
@@ -229,19 +238,28 @@ public class PlayfieldController extends AbstractController {
         }
 
         private void newPlaceTile(Position position, Position nextPosition) {
-            System.out.println(position + " "+   nextPosition + "232");
+            System.out.println(position + " " + nextPosition + "232");
             ObservableList<TilePane> tiles = getTiles();
             TilePane removeTile = null;
             for (TilePane tile : tiles) {
-                if (Position.comparePositions(tile.getPosition(),position)){
+                if (Position.comparePositions(tile.getPosition(), position)) {
                     removeTile = tile;
                 }
             }
-            gridPlayfield.add(new TilePane(removeTile.getValue()), nextPosition.getY(),nextPosition.getX());
+            gridPlayfield.add(new TilePane(removeTile.getValue()), nextPosition.getY(), nextPosition.getX());
             gridPlayfield.getChildren().remove(removeTile);
         }
     }
 
+    /**
+     * This private method is responsible for inserting a new TilePane into the playfield grid.
+     * A random x and y coordinate is generated, and a check is made to see if the space is already occupied by another TilePane.
+     * If the space is not occupied, a new TilePane is created with a random value of 2 or 4.
+     * If the value of any TilePane on the playfield is 2048, the game is set to be over.
+     * If an IOException is thrown, it is propagated to the calling method.
+     *
+     * @throws IOException if an input or output exception occurs
+     */
     private void insertingTileInPlayfield() throws IOException {
         boolean placeistaken = false;
         boolean over = false;
@@ -263,23 +281,37 @@ public class PlayfieldController extends AbstractController {
                 if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
                     placeistaken = true;
                 }
+                System.out.println(gridPlayfield.getChildren().size());
+                if (Math.random() > 0.89) {
+                    tp = new TilePane(4);
+                } else {
+                    tp = new TilePane(2);
+                }
+                for (Node child1 : children) {
+                    if (child1 instanceof TilePane) {
+                        if (tilePane.getValue() == 2048) {
+                            over = true;
+                        }
+                        if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
+                            placeistaken = true;
+                        }
 
 
-            }
-        }
-
-        if (gridPlayfield.getChildren().size() == 16) {
-            for (int i = 0; i <= 14; i++) {
-                if (children.get(i) instanceof TilePane && children.get(i+1) instanceof TilePane) {
-                    TilePane tile1 = (TilePane) children.get(i);
-                    TilePane tile2 = (TilePane) children.get(i + 1);
-                if (tile1.getValue()==(tile2.getValue())) {
-                    System.out.println("weiter gehts  277");
+                    }
                 }
 
-            }
-        }
-        }
+                if (gridPlayfield.getChildren().size() == 16) {
+                    for (int i = 0; i <= 14; i++) {
+                        if (children.get(i) instanceof TilePane && children.get(i + 1) instanceof TilePane) {
+                            TilePane tile1 = (TilePane) children.get(i);
+                            TilePane tile2 = (TilePane) children.get(i + 1);
+                            if (tile1.getValue() == (tile2.getValue())) {
+                                System.out.println("weiter gehts  277");
+                            }
+
+                        }
+                    }
+                }
        /* over = true;
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Alarm");
@@ -287,6 +319,17 @@ public class PlayfieldController extends AbstractController {
         alert.setContentText("An error has occurred. Please try again later.");
         alert.show();
         */
+            }
+        }
+        if (gridPlayfield.getChildren().size() == 16) {
+            over = true;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Alarm");
+            alert.setHeaderText("An Error Occurred");
+            alert.setContentText("An error has occurred. Please try again later.");
+            alert.show();
+        }
+
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {

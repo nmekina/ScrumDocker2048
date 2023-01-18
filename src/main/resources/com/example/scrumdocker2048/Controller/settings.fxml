@@ -19,9 +19,9 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="73.33334350585938" minHeight="10.0" prefHeight="65.33334350585938" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="95.99998982747394" vgrow="SOMETIMES" />
+            <RowConstraints />
+          <RowConstraints maxHeight="73.33334350585938" minHeight="10.0" prefHeight="65.33334350585938" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="95.99998982747394" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="95.99998982747394" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="95.99998982747394" vgrow="SOMETIMES" />
         </rowConstraints>
@@ -43,6 +43,23 @@
             </Label>
             <ColorPicker fx:id="colorPickerPf" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <ColorPicker fx:id="colorPickerTIles" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackPressed" prefHeight="44.0" prefWidth="28.0" text="&lt;" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <Button fx:id="btnHighscore" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="106.0" layoutY="244.0" mnemonicParsing="false" onAction="#btnHighscoreClick" prefHeight="25.0" prefWidth="80.0" text="Button">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSave" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="200.0" layoutY="244.0" mnemonicParsing="false" onAction="#btnSaveClick" prefHeight="25.0" prefWidth="80.0" text="Button">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
             <Button fx:id="btnSave" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnSaveClick" prefHeight="25.0" prefWidth="80.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
