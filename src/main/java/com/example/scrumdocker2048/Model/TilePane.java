@@ -11,6 +11,8 @@ public class TilePane extends Pane {
     private int value = 0;
     Label labelValue=new Label();
 
+    private Position position;
+
     public TilePane(int value){
         setValue(value);
         if (value <= 2048) {
@@ -41,5 +43,13 @@ public class TilePane extends Pane {
         for (int i = 0; i < tilePanes.size(); i++) {
             System.out.println(tilePanes.get(i));
         }
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }

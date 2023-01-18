@@ -1,11 +1,18 @@
 package com.example.scrumdocker2048.Model;
 
+import javafx.geometry.Pos;
+
 public class Position {
     private int x;
     private int y;
 
-    public Position() {
 
+    public static boolean comparePositions(Position pos1, Position pos2){
+        boolean rv = false;
+        if (pos1.getX() == pos2.getX() && pos1.getY() == pos2.getY()){
+            rv = true;
+        }
+        return rv;
     }
 
     public int getX() {
@@ -27,5 +34,11 @@ public class Position {
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + x + "|"+ y +
+                "}";
     }
 }
