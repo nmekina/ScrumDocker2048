@@ -97,6 +97,7 @@ public class PlayfieldController extends AbstractController {
             ObservableList<TilePane> tiles = getTiles();
             Position currentPosition;
             Position moveNextPosition = null;
+            int currentValue = 0;
             switch (key) {
                 case UP: // row -
                     System.out.println("up");
@@ -108,36 +109,24 @@ public class PlayfieldController extends AbstractController {
                             for (TilePane tile : tiles) {
                                 if (Position.comparePositions(currentPosition, tile.getPosition())) {
                                     moveNextPosition = new Position(tile.getPosition().getX() - 1, tile.getPosition().getY());
+                                    currentValue = tile.getValue();
+
                                 }
                             }
                             if (moveNextPosition != null) {
                                 if (moveNextPosition.getX() >= 0) {
-                                    if (checkPosIfMoveOn(moveNextPosition)) {
+                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
                                         System.out.println(moveNextPosition + " 102");
                                         newPlaceTile(currentPosition, moveNextPosition);
                                     }
                                 }
                             }
                             moveNextPosition = null;
+                            currentValue = 0;
                         }
                     }
 
-                    /*for (Position position : positionsOfPanes) {
-                        boolean notOcupied = true;
-                        Position nextPosition = new Position((position.getX() - 1), position.getY());
-                        while (nextPosition.getX() >= 0 && notOcupied) {
-                            for (Position position2 : positionsOfPanes) {
-                                if (position2.getX() == nextPosition.getX() && position2.getY() == nextPosition.getY()) {
-                                    notOcupied = false;
-                                    break;
-                                }
-                            }
-                            if (notOcupied) {
-                                newPlaceTile(position, nextPosition);
-                                nextPosition.setX(nextPosition.getX() - 1);
-                            }
-                        }
-                    }*/
+
                     break;
                 case DOWN:// row +
                     System.out.println("down");
@@ -148,17 +137,19 @@ public class PlayfieldController extends AbstractController {
                             for (TilePane tile : tiles) {
                                 if (Position.comparePositions(currentPosition, tile.getPosition())) {
                                     moveNextPosition = new Position(tile.getPosition().getX() + 1, tile.getPosition().getY());
+                                    currentValue = tile.getValue();
                                 }
                             }
                             if (moveNextPosition != null) {
                                 if (moveNextPosition.getX() < 4) {
-                                    if (checkPosIfMoveOn(moveNextPosition)) {
+                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
                                         System.out.println(moveNextPosition + " 102");
                                         newPlaceTile(currentPosition, moveNextPosition);
                                     }
                                 }
                             }
                             moveNextPosition = null;
+                            currentValue = 0;
                         }
                     }
                     break;
@@ -171,17 +162,19 @@ public class PlayfieldController extends AbstractController {
                             for (TilePane tile : tiles){
                                 if (Position.comparePositions(currentPosition, tile.getPosition())){
                                     moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY()-1);
+                                    currentValue = tile.getValue();
                                 }
                             }
                             if (moveNextPosition != null) {
                                 if (moveNextPosition.getY() >= 0) {
-                                    if (checkPosIfMoveOn(moveNextPosition)) {
+                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
                                         System.out.println(moveNextPosition + " 102");
                                         newPlaceTile(currentPosition, moveNextPosition);
                                     }
                                 }
                             }
                             moveNextPosition = null;
+                            currentValue = 0;
                         }
                     }
                     break;
@@ -194,17 +187,19 @@ public class PlayfieldController extends AbstractController {
                             for (TilePane tile : tiles){
                                 if (Position.comparePositions(currentPosition, tile.getPosition())){
                                     moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY()+1);
+                                    currentValue = tile.getValue();
                                 }
                             }
                             if (moveNextPosition != null) {
                                 if (moveNextPosition.getY() < 4) {
-                                    if (checkPosIfMoveOn(moveNextPosition)) {
+                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
                                         System.out.println(moveNextPosition + " 102");
                                         newPlaceTile(currentPosition, moveNextPosition);
                                     }
                                 }
                             }
                             moveNextPosition = null;
+                            currentValue = 0;
                         }
                     }
                     break;
@@ -219,12 +214,14 @@ public class PlayfieldController extends AbstractController {
 
         }
 
-        private boolean checkPosIfMoveOn(Position moveNextPosition) {
+        private boolean checkPosIfMoveOn(Position moveNextPosition, int val) {
             ObservableList<TilePane> tiles = getTiles();
             boolean returnValue = true;
             for (TilePane tile : tiles) {
                 if (Position.comparePositions(moveNextPosition, tile.getPosition())) {
-                    returnValue = false;
+                    if (!(tile.getValue() == val)){
+                        returnValue = false;
+                    }
                 }
             }
             return returnValue;
