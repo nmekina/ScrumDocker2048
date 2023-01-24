@@ -27,6 +27,7 @@ import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class PlayfieldController extends AbstractController {
@@ -98,10 +99,10 @@ public class PlayfieldController extends AbstractController {
             Position currentPosition;
             Position moveNextPosition = null;
             int currentValue = 0;
+            int moveAvailable = 0;
             switch (key) {
                 case UP: // row -
                     System.out.println("up");
-
                     for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
                             currentPosition = new Position(col, row);
@@ -115,23 +116,25 @@ public class PlayfieldController extends AbstractController {
                             }
                             if (moveNextPosition != null) {
                                 if (moveNextPosition.getX() >= 0) {
-                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
-                                        System.out.println(moveNextPosition + " 102");
-                                        newPlaceTile(currentPosition, moveNextPosition);
+                                    moveAvailable = checkPosIfMoveOn(moveNextPosition, currentValue);
+                                    if (moveAvailable == 1) {
+                                        System.out.println(moveNextPosition + " 120");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue);
+                                    } else if (moveAvailable == 2){
+                                        System.out.println(moveNextPosition + " 124");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
                                     }
                                 }
                             }
                             moveNextPosition = null;
                             currentValue = 0;
+                            moveAvailable = 0;
                         }
                     }
-
-
                     break;
                 case DOWN:// row +
                     System.out.println("down");
-
-                    for (int row = 0; row < gridPlayfield.getRowCount(); row ++) {
+                    for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = gridPlayfield.getColumnCount(); col >= 0; col--) {
                             currentPosition = new Position(col, row);
                             for (TilePane tile : tiles) {
@@ -141,65 +144,78 @@ public class PlayfieldController extends AbstractController {
                                 }
                             }
                             if (moveNextPosition != null) {
-                                if (moveNextPosition.getX() < 4) {
-                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
-                                        System.out.println(moveNextPosition + " 102");
-                                        newPlaceTile(currentPosition, moveNextPosition);
+                                if (moveNextPosition.getY() < 4) {
+                                    moveAvailable = checkPosIfMoveOn(moveNextPosition, currentValue);
+                                    if (moveAvailable == 1) {
+                                        System.out.println(moveNextPosition + " 150");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue);
+                                    } else if (moveAvailable == 2){
+                                        System.out.println(moveNextPosition + " 153");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
                                     }
                                 }
                             }
                             moveNextPosition = null;
                             currentValue = 0;
+                            moveAvailable = 0;
                         }
                     }
                     break;
                 case LEFT: // col -
                     System.out.println("left");
-
                     for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
-                        for (int row = 0; row < gridPlayfield.getRowCount(); row ++) {
+                        for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                             currentPosition = new Position(col, row);
-                            for (TilePane tile : tiles){
-                                if (Position.comparePositions(currentPosition, tile.getPosition())){
-                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY()-1);
+                            for (TilePane tile : tiles) {
+                                if (Position.comparePositions(currentPosition, tile.getPosition())) {
+                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY() - 1);
                                     currentValue = tile.getValue();
                                 }
                             }
                             if (moveNextPosition != null) {
                                 if (moveNextPosition.getY() >= 0) {
-                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
-                                        System.out.println(moveNextPosition + " 102");
-                                        newPlaceTile(currentPosition, moveNextPosition);
+                                    moveAvailable = checkPosIfMoveOn(moveNextPosition, currentValue);
+                                    if (moveAvailable == 1) {
+                                        System.out.println(moveNextPosition + " 179");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue);
+                                    } else if (moveAvailable == 2){
+                                        System.out.println(moveNextPosition + " 182");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
                                     }
                                 }
                             }
                             moveNextPosition = null;
                             currentValue = 0;
+                            moveAvailable = 0;
                         }
                     }
                     break;
                 case RIGHT: // col +
                     System.out.println("right");
-
                     for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
-                        for (int row = gridPlayfield.getRowCount(); row >= 0 ; row--) {
+                        for (int row = gridPlayfield.getRowCount(); row >= 0; row--) {
                             currentPosition = new Position(col, row);
-                            for (TilePane tile : tiles){
-                                if (Position.comparePositions(currentPosition, tile.getPosition())){
-                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY()+1);
+                            for (TilePane tile : tiles) {
+                                if (Position.comparePositions(currentPosition, tile.getPosition())) {
+                                    moveNextPosition = new Position(tile.getPosition().getX(), tile.getPosition().getY() + 1);
                                     currentValue = tile.getValue();
                                 }
                             }
                             if (moveNextPosition != null) {
                                 if (moveNextPosition.getY() < 4) {
-                                    if (checkPosIfMoveOn(moveNextPosition, currentValue)) {
-                                        System.out.println(moveNextPosition + " 102");
-                                        newPlaceTile(currentPosition, moveNextPosition);
+                                    moveAvailable = checkPosIfMoveOn(moveNextPosition, currentValue);
+                                    if (moveAvailable == 1) {
+                                        System.out.println(moveNextPosition + " 208");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue);
+                                    } else if (moveAvailable == 2){
+                                        System.out.println(moveNextPosition + " 211");
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
                                     }
                                 }
                             }
                             moveNextPosition = null;
                             currentValue = 0;
+                            moveAvailable = 0;
                         }
                     }
                     break;
@@ -214,13 +230,14 @@ public class PlayfieldController extends AbstractController {
 
         }
 
-        private boolean checkPosIfMoveOn(Position moveNextPosition, int val) {
+        private int checkPosIfMoveOn(Position moveNextPosition, int val) {
             ObservableList<TilePane> tiles = getTiles();
-            boolean returnValue = true;
+            int returnValue = 1;
             for (TilePane tile : tiles) {
                 if (Position.comparePositions(moveNextPosition, tile.getPosition())) {
-                    if (!(tile.getValue() == val)){
-                        returnValue = false;
+                    returnValue = 2;
+                    if (!(tile.getValue() == val)) {
+                        returnValue = 0;
                     }
                 }
             }
@@ -244,17 +261,19 @@ public class PlayfieldController extends AbstractController {
             return tiles;
         }
 
-        private void newPlaceTile(Position position, Position nextPosition) {
+        private void newPlaceTile(Position position, Position nextPosition, int val) {
             System.out.println(position + " " + nextPosition + "232");
             ObservableList<TilePane> tiles = getTiles();
-            TilePane removeTile = null;
+            List<TilePane> removeTile = new ArrayList<>();
             for (TilePane tile : tiles) {
                 if (Position.comparePositions(tile.getPosition(), position)) {
-                    removeTile = tile;
+                    removeTile.add(tile);
                 }
             }
-            gridPlayfield.add(new TilePane(removeTile.getValue()), nextPosition.getY(), nextPosition.getX());
-            gridPlayfield.getChildren().remove(removeTile);
+            gridPlayfield.add(new TilePane(val), nextPosition.getY(), nextPosition.getX());
+            for (TilePane tilePane : removeTile) {
+                gridPlayfield.getChildren().remove(tilePane);
+            }
         }
     }
 
