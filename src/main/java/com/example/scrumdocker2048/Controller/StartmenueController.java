@@ -14,29 +14,6 @@ public class StartmenueController extends AbstractController {
     private Label labelName;
 
     @FXML
-    private MenuItem MenueBarSettings;
-
-    @FXML
-    private MenuItem MenueBarHelp;
-
-    @FXML
-    private MenuItem MenueBarHighscore;
-
-    @FXML
-    private Button startgamebtn;
-
-    @FXML
-    void MenueBarHelpClicked(ActionEvent event) {
-        try {
-            HelpController c = this.loadFxmlFile("help.fxml", "Help",
-                    labelName.getScene().getWindow(), HelpController.class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     void MenueBarHighscoreClicked(ActionEvent event) {
         try {
             HighscoreController c = this.loadFxmlFile("highscore.fxml", "highscore",
@@ -46,7 +23,6 @@ public class StartmenueController extends AbstractController {
             e.printStackTrace();
         }
     }
-
 
     public void ButtonStartGameClicked(ActionEvent actionEvent) throws IOException {
         try {

@@ -19,8 +19,6 @@ public class SplashController {
     public javafx.scene.layout.AnchorPane AnchorPane;
     public javafx.scene.layout.AnchorPane ap;
 
-    private boolean splashonscreen = true;
-
     /**
      * Image des Splash wird gesetzt
      */

@@ -1,7 +1,5 @@
 package com.example.scrumdocker2048.Model;
 
-import javafx.geometry.Pos;
-
 public class Position {
     private int x;
     private int y;

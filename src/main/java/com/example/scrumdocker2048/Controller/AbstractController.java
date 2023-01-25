@@ -38,9 +38,4 @@ public abstract class AbstractController {
         this.stage = s;
     }
 
-    public void closeWindow() {
-        if (stage != null) {
-            stage.close();
-        }
-    }
 }

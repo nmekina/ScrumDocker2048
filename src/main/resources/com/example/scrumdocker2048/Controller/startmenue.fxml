@@ -18,12 +18,6 @@
         </Label>
         <MenuBar>
             <menus>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem fx:id="MenueBarHelp" mnemonicParsing="false" onAction="#MenueBarHelpClicked"
-                                  text="Game Help"/>
-                    </items>
-                </Menu>
                 <Menu mnemonicParsing="false" text="Highscore">
                     <items>
                         <MenuItem fx:id="MenueBarHighscore" mnemonicParsing="false" onAction="#MenueBarHighscoreClicked"

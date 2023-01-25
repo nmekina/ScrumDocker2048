@@ -12,14 +12,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HighscoreController extends AbstractController {
-    @FXML
-    private Button btnName;
+
 
     @FXML
     private Button btnScore;
-
-    @FXML
-    private Button btnGamesPlayed;
 
     @FXML
     private ListView<Username> listviewHighscore;
