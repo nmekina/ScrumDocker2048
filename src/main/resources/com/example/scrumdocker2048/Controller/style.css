@@ -50,29 +50,25 @@ https://colordesigner.io/gradient-generator
 }
 
 .tileLabel_10 {
-    -fx-padding: 25 0 0 40;
+    -fx-padding: 19 0 0 34;
     -fx-text-fill: white;
     -fx-font-size: 36;
 }
 
 .tileLabel_100 {
-    -fx-padding: 25 0 0 30;
+    -fx-padding: 19 0 0 24;
     -fx-text-fill: white;
     -fx-font-size: 36;
 }
 
 .tileLabel_1000 {
-    -fx-padding: 25 0 0 20;
+    -fx-padding: 19 0 0 14;
     -fx-text-fill: white;
     -fx-font-size: 36;
 }
 
 .tileLabel_10000 {
-    -fx-padding: 25 0 0 10;
-}
-
-.tileLabel {
-    -fx-padding: 25 30 30 35;
+    -fx-padding: 19 0 0 4;
     -fx-text-fill: white;
     -fx-font-size: 36;
 }
