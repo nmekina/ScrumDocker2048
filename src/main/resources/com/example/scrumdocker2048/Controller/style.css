@@ -23,19 +23,19 @@ https://colordesigner.io/gradient-generator
     -fx-background-color: #EDD073;
 }
 .tile_256 {
-    background-color: #EDC950;
+    -fx-background-color: #EDC950;
 }
 .tile_512 {
-    background-color: #f3c528;
+    -fx-background-color: #f3c528;
 }
 .tile_1024 {
-    background-color: #b4900c;
+    -fx-background-color: #b4900c;
 }
 .tile_2048 {
-    background-color: #8d6f05;
+    -fx-background-color: #8d6f05;
 }
 .tile_above {
-    background-color: #4d582a;
+    -fx-background-color: #4d582a;
 }
 
 .tileLabel{
