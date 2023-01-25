@@ -38,7 +38,7 @@ public class PlayfieldController extends AbstractController {
     @FXML
     public Label labelName;
     @FXML
-    public Label labelHighscore;
+    public Label labelCurrentHighscore;
     @FXML
     public Label labelHighestScore;
     Username username = new Username();
@@ -50,17 +50,14 @@ public class PlayfieldController extends AbstractController {
         insertingTileInPlayfield();
         labelCurrent.setText(usernameController.getName());
         labelHighestScore.setText(String.valueOf(username.getHighscore()));
-        labelHighscore.setText(String.valueOf(username.getCurrentHighscore()));
+        labelCurrentHighscore.setText(String.valueOf(username.getCurrentHighscore()));
     }
 
 
     @FXML
     public void btnBackPressed(ActionEvent actionEvent) {
         try {
-            loadFxmlFile("startmenue.fxml",
-                    "Startmenue",
-                    labelName.getScene().getWindow(),
-                    StartmenueController.class);
+            loadFxmlFile("startmenue.fxml", "Startmenue", labelName.getScene().getWindow(), StartmenueController.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -69,10 +66,7 @@ public class PlayfieldController extends AbstractController {
     @FXML
     public void btnNewGamePressed(ActionEvent actionEvent) {
         try {
-            loadFxmlFile("playfield.fxml",
-                    "2048 - The Game",
-                    labelName.getScene().getWindow(),
-                    PlayfieldController.class);
+            loadFxmlFile("playfield.fxml", "2048 - The Game", labelName.getScene().getWindow(), PlayfieldController.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -227,7 +221,10 @@ public class PlayfieldController extends AbstractController {
             }
             if (returnValue == 2) {
                 username.addOnHighScore(val * 2);
-                labelHighscore.setText(String.valueOf(username.getCurrentHighscore()));
+                if (username.getCurrentHighscore() >= username.getHighscore()) {
+                    labelHighestScore.setText(String.valueOf(username.getCurrentHighscore()));
+                }
+                labelCurrentHighscore.setText(String.valueOf(username.getCurrentHighscore()));
             }
             return returnValue;
         }
