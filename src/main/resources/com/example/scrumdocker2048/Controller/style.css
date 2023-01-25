@@ -38,8 +38,26 @@ https://colordesigner.io/gradient-generator
     -fx-background-color: #4d582a;
 }
 
-.tileLabel{
-    -fx-padding: 25 30 30 35;
+.tileLabel_10{
+    -fx-padding: 25 0 0 40;
+    -fx-text-fill: white;
+    -fx-font-size: 36;
+}
+
+.tileLabel_100{
+    -fx-padding: 25 0 0 30;
+    -fx-text-fill: white;
+    -fx-font-size: 36;
+}
+
+.tileLabel_1000{
+    -fx-padding: 25 0 0 20;
+    -fx-text-fill: white;
+    -fx-font-size: 36;
+}
+
+.tileLabel_10000{
+    -fx-padding: 25 0 0 10;
     -fx-text-fill: white;
     -fx-font-size: 36;
 }

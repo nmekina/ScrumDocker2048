@@ -9,22 +9,31 @@ import java.util.List;
 public class TilePane extends Pane {
 
     private int value = 0;
-    Label labelValue=new Label();
+    Label labelValue = new Label();
 
     private Position position;
 
-    public TilePane(int value){
+    public TilePane(int value) {
         setValue(value);
         if (value <= 2048) {
             this.getStyleClass().add("tile_" + value);
-        }else {
+        } else {
             this.getStyleClass().add("tile_above");
+        }
 
-        }
         labelValue.setText(String.valueOf(value));
-        labelValue.getStyleClass().add("tileLabel");
-        this.getChildren().add(labelValue);
+        if (value < 10) {
+            labelValue.getStyleClass().add("tileLabel_10");
+        } else if (value < 100) {
+            labelValue.getStyleClass().add("tileLabel_100");
+        } else if (value < 1000) {
+            labelValue.getStyleClass().add("tileLabel_1000");
+        } else {
+            labelValue.getStyleClass().add("tileLabel_10000");
         }
+
+        this.getChildren().add(labelValue);
+    }
 
     public int getValue() {
         return value;
@@ -37,7 +46,7 @@ public class TilePane extends Pane {
     public static void main(String[] args) {
         List<TilePane> tilePanes = new ArrayList<>();
 
-        for (int i = 1; i < 10000; i=i*2) {
+        for (int i = 1; i < 10000; i = i * 2) {
             tilePanes.add(new TilePane(i));
         }
         for (int i = 0; i < tilePanes.size(); i++) {
