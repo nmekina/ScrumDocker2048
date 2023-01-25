@@ -1,8 +1,10 @@
 package com.example.scrumdocker2048.Controller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 
@@ -45,16 +47,6 @@ public class StartmenueController extends AbstractController {
         }
     }
 
-    @FXML
-    void MenueBarSettingsClicked(ActionEvent event) {
-        try {
-            SettingsController c = this.loadFxmlFile("settings.fxml", "Settings",
-                    labelName.getScene().getWindow(), SettingsController.class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void ButtonStartGameClicked(ActionEvent actionEvent) throws IOException {
         try {

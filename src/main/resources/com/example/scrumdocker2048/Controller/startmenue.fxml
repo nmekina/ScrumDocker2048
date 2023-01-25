@@ -8,32 +8,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scrumdocker2048.Controller.StartmenueController">
-   <children>
-      <Label fx:id="labelName" layoutX="130.0" layoutY="73.0" text="2048">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </Label>
-      <MenuBar>
-         <menus>
-            <Menu mnemonicParsing="false" text="Setings">
-               <items>
-                  <MenuItem fx:id="MenueBarSettings" mnemonicParsing="false" onAction="#MenueBarSettingsClicked" text="Settings" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem fx:id="MenueBarHelp" mnemonicParsing="false" onAction="#MenueBarHelpClicked" text="Game Help" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Highscore">
-               <items>
-                  <MenuItem fx:id="MenueBarHighscore" mnemonicParsing="false" onAction="#MenueBarHighscoreClicked" text="Highscore" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <Button fx:id="startgamebtn" layoutX="116.0" layoutY="200.0" mnemonicParsing="false" onAction="#ButtonStartGameClicked" text="Start the game" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.scrumdocker2048.Controller.StartmenueController">
+    <children>
+        <Label fx:id="labelName" layoutX="130.0" layoutY="73.0" text="2048">
+            <font>
+                <Font size="31.0"/>
+            </font>
+        </Label>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="MenueBarHelp" mnemonicParsing="false" onAction="#MenueBarHelpClicked"
+                                  text="Game Help"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Highscore">
+                    <items>
+                        <MenuItem fx:id="MenueBarHighscore" mnemonicParsing="false" onAction="#MenueBarHighscoreClicked"
+                                  text="Highscore"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Button fx:id="startgamebtn" layoutX="116.0" layoutY="200.0" mnemonicParsing="false"
+                onAction="#ButtonStartGameClicked" text="Start the game"/>
+    </children>
 </AnchorPane>
