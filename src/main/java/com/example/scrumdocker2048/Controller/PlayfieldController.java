@@ -3,32 +3,24 @@ package com.example.scrumdocker2048.Controller;
 import com.example.scrumdocker2048.Model.Position;
 import com.example.scrumdocker2048.Model.TilePane;
 import com.example.scrumdocker2048.Model.Username;
-import javafx.collections.*;
-import com.example.scrumdocker2048.Model.checkConditions;
-import javafx.animation.AnimationTimer;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Window;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayfieldController extends AbstractController {
 
@@ -54,7 +46,6 @@ public class PlayfieldController extends AbstractController {
     Username username = new Username();
 
 
-
     UsernameController usernameController = new UsernameController();
 
     public void initialize() throws IOException {
@@ -63,6 +54,7 @@ public class PlayfieldController extends AbstractController {
         insertingTileInPlayfield();
         labelCurrent.setText(usernameController.getName());
         labelHighestScore.setText(String.valueOf(username.getHighscore()));
+        labelHighscore.setText(String.valueOf(username.getCurrentHighscore()));
     }
 
 
@@ -122,9 +114,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 120");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 124");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -151,9 +143,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 150");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 153");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -180,9 +172,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 179");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 182");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -209,9 +201,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 208");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 211");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -243,9 +235,9 @@ public class PlayfieldController extends AbstractController {
                     }
                 }
             }
-            if (returnValue == 2){
+            if (returnValue == 2) {
                 username.addOnHighScore(val * 2);
-                System.out.println(username.getCurrentHighscore() + 248);
+                labelHighscore.setText(String.valueOf(username.getCurrentHighscore()));
             }
             return returnValue;
         }
@@ -338,34 +330,19 @@ public class PlayfieldController extends AbstractController {
                             TilePane tile1 = (TilePane) children.get(i);
                             TilePane tile2 = (TilePane) children.get(i + 1);
                             if (tile1.getValue() == (tile2.getValue())) {
-                                System.out.println("weiter gehts  277");
+                                System.out.println("weiter gehts");
                             }
 
                         }
                     }
                 }
-       /* over = true;
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error Alarm");
-        alert.setHeaderText("An Error Occurred");
-        alert.setContentText("An error has occurred. Please try again later.");
-        alert.show();
-        */
             }
-        }
-        if (gridPlayfield.getChildren().size() == 16) {
-            over = true;
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Alarm");
-            alert.setHeaderText("An Error Occurred");
-            alert.setContentText("An error has occurred. Please try again later.");
-            alert.show();
         }
 
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
-            System.out.println(gridPlayfield.getChildren().size() + "293");
+            System.out.println(gridPlayfield.getChildren().size() + " Size");
             gridPlayfield.add(tp, x, y);
         } else {
             System.out.println("Gewonnen!");

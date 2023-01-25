@@ -31,7 +31,6 @@ public class Username {
         this.password = password;
     }
 
-
     public Username() {
 
     }
@@ -147,7 +146,7 @@ public class Username {
     }
 
 
-    public void     addOnHighScore(int val){
+    public void addOnHighScore(int val){
         this.currentHighscore += val;
     }
 }
