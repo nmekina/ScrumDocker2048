@@ -3,32 +3,24 @@ package com.example.scrumdocker2048.Controller;
 import com.example.scrumdocker2048.Model.Position;
 import com.example.scrumdocker2048.Model.TilePane;
 import com.example.scrumdocker2048.Model.Username;
-import javafx.collections.*;
-import com.example.scrumdocker2048.Model.checkConditions;
-import javafx.animation.AnimationTimer;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Window;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayfieldController extends AbstractController {
 
