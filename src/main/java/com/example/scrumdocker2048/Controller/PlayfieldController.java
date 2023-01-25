@@ -54,7 +54,6 @@ public class PlayfieldController extends AbstractController {
     Username username = new Username();
 
 
-
     UsernameController usernameController = new UsernameController();
 
     public void initialize() throws IOException {
@@ -63,6 +62,7 @@ public class PlayfieldController extends AbstractController {
         insertingTileInPlayfield();
         labelCurrent.setText(usernameController.getName());
         labelHighestScore.setText(String.valueOf(username.getHighscore()));
+        labelHighscore.setText(String.valueOf(username.getCurrentHighscore()));
     }
 
 
@@ -122,9 +122,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 120");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 124");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -151,9 +151,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 150");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 153");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -180,9 +180,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 179");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 182");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -209,9 +209,9 @@ public class PlayfieldController extends AbstractController {
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 208");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
-                                    } else if (moveAvailable == 2){
+                                    } else if (moveAvailable == 2) {
                                         System.out.println(moveNextPosition + " 211");
-                                        newPlaceTile(currentPosition, moveNextPosition, currentValue*2);
+                                        newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
@@ -243,9 +243,9 @@ public class PlayfieldController extends AbstractController {
                     }
                 }
             }
-            if (returnValue == 2){
+            if (returnValue == 2) {
                 username.addOnHighScore(val * 2);
-                System.out.println(username.getCurrentHighscore() + 248);
+                labelHighscore.setText(String.valueOf(username.getCurrentHighscore()));
             }
             return returnValue;
         }

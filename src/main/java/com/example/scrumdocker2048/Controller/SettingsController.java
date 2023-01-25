@@ -14,7 +14,8 @@ public class SettingsController extends AbstractController {
     public Label labelColorPickerPlayfield;
     public Label labelColorPickerTiles;
     public ColorPicker colorPickerPf;
-    public ColorPicker colorPickerTIles;
+    public ColorPicker colorPickerTiles;
+    public Button btnHighscore;
     @FXML
     private Button btnSave;
 
@@ -62,9 +63,11 @@ public class SettingsController extends AbstractController {
     private void save() {
     }
 
-    /**
-     * speichert difficulty
-     */
+    public void btnBackPressed(ActionEvent actionEvent) {
+    }
+
+    public void btnHighscoreClick(ActionEvent actionEvent) {
+    }
 
 
 }

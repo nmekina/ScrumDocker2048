@@ -31,7 +31,6 @@ public class SplashController {
         splash();
     }
 
-
     /**
      * Splashscreen wird aufgerufen und bleibt fuer 2 Sekunden
      */
