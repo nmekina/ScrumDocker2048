@@ -330,34 +330,19 @@ public class PlayfieldController extends AbstractController {
                             TilePane tile1 = (TilePane) children.get(i);
                             TilePane tile2 = (TilePane) children.get(i + 1);
                             if (tile1.getValue() == (tile2.getValue())) {
-                                System.out.println("weiter gehts  277");
+                                System.out.println("weiter gehts");
                             }
 
                         }
                     }
                 }
-       /* over = true;
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error Alarm");
-        alert.setHeaderText("An Error Occurred");
-        alert.setContentText("An error has occurred. Please try again later.");
-        alert.show();
-        */
             }
-        }
-        if (gridPlayfield.getChildren().size() == 16) {
-            over = true;
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Alarm");
-            alert.setHeaderText("An Error Occurred");
-            alert.setContentText("An error has occurred. Please try again later.");
-            alert.show();
         }
 
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
-            System.out.println(gridPlayfield.getChildren().size() + "293");
+            System.out.println(gridPlayfield.getChildren().size() + " Size");
             gridPlayfield.add(tp, x, y);
         } else {
             System.out.println("Gewonnen!");
