@@ -53,6 +53,8 @@ public class PlayfieldController extends AbstractController {
     public Label labelHighestScore;
     Username username = new Username();
 
+
+
     UsernameController usernameController = new UsernameController();
 
     public void initialize() throws IOException {
@@ -240,6 +242,10 @@ public class PlayfieldController extends AbstractController {
                         returnValue = 0;
                     }
                 }
+            }
+            if (returnValue == 2){
+                username.addOnHighScore(val * 2);
+                System.out.println(username.getCurrentHighscore() + 248);
             }
             return returnValue;
         }

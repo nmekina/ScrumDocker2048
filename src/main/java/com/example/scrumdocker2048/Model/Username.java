@@ -8,11 +8,13 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class Username {
-    private Integer id;
+    private int id;
     private String username;
     private String password;
-    private Integer highscore;
-    private Integer gamesPlayed;
+    private int highscore;
+    private int gamesPlayed;
+
+    private int currentHighscore = 0;
 
     UsernameController usernameController = new UsernameController();
 
@@ -138,5 +140,14 @@ public class Username {
     @Override
     public String toString() {
         return username + " - " + highscore + " - " + gamesPlayed;
+    }
+
+    public int getCurrentHighscore() {
+        return currentHighscore;
+    }
+
+
+    public void     addOnHighScore(int val){
+        this.currentHighscore += val;
     }
 }
