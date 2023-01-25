@@ -205,7 +205,9 @@ public class PlayfieldController extends AbstractController {
                     System.out.println("no available action");
             }
             try {
-                insertingTileInPlayfield();
+                if (gridPlayfield.getChildren().size() < 32) {
+                    insertingTileInPlayfield();
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -276,7 +278,6 @@ public class PlayfieldController extends AbstractController {
         boolean placeistaken = false;
         boolean over = false;
         ObservableList<Node> children = gridPlayfield.getChildren();
-        boolean isCellNull = true;
         int x = (int) (Math.random() * 4);
         int y = (int) (Math.random() * 4);
         TilePane tp = null;
@@ -307,21 +308,6 @@ public class PlayfieldController extends AbstractController {
                         if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
                             placeistaken = true;
                         }
-
-
-                    }
-                }
-
-                if (gridPlayfield.getChildren().size() == 16) {
-                    for (int i = 0; i <= 14; i++) {
-                        if (children.get(i) instanceof TilePane && children.get(i + 1) instanceof TilePane) {
-                            TilePane tile1 = (TilePane) children.get(i);
-                            TilePane tile2 = (TilePane) children.get(i + 1);
-                            if (tile1.getValue() == (tile2.getValue())) {
-                                System.out.println("weiter gehts");
-                            }
-
-                        }
                     }
                 }
             }
@@ -330,7 +316,6 @@ public class PlayfieldController extends AbstractController {
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
-            System.out.println(gridPlayfield.getChildren().size() + " Size");
             gridPlayfield.add(tp, x, y);
         } else {
             System.out.println("Gewonnen!");
