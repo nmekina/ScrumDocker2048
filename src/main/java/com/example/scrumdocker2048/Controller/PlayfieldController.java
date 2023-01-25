@@ -144,7 +144,7 @@ public class PlayfieldController extends AbstractController {
                                 }
                             }
                             if (moveNextPosition != null) {
-                                if (moveNextPosition.getY() < 4) {
+                                if (moveNextPosition.getX() < 4) {
                                     moveAvailable = checkPosIfMoveOn(moveNextPosition, currentValue);
                                     if (moveAvailable == 1) {
                                         System.out.println(moveNextPosition + " 150");
@@ -266,7 +266,7 @@ public class PlayfieldController extends AbstractController {
             ObservableList<TilePane> tiles = getTiles();
             List<TilePane> removeTile = new ArrayList<>();
             for (TilePane tile : tiles) {
-                if (Position.comparePositions(tile.getPosition(), position)) {
+                if (Position.comparePositions(tile.getPosition(), position) || Position.comparePositions(tile.getPosition(), nextPosition)) {
                     removeTile.add(tile);
                 }
             }
