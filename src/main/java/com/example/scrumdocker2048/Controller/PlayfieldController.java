@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -30,7 +29,6 @@ public class PlayfieldController extends AbstractController {
     StartEventHandler startEventhandler = new StartEventHandler();
     @FXML
     public Label labelStartPlay;
-
     @FXML
     public GridPane gridPlayfield;
     @FXML
@@ -44,8 +42,6 @@ public class PlayfieldController extends AbstractController {
     @FXML
     public Label labelHighestScore;
     Username username = new Username();
-
-
     UsernameController usernameController = new UsernameController();
 
     public void initialize() throws IOException {
@@ -93,7 +89,7 @@ public class PlayfieldController extends AbstractController {
             Position currentPosition;
             Position moveNextPosition = null;
             int currentValue = 0;
-            int moveAvailable = 0;
+            int moveAvailable;
             switch (key) {
                 case UP: // row -
                     System.out.println("up");
@@ -112,17 +108,14 @@ public class PlayfieldController extends AbstractController {
                                 if (moveNextPosition.getX() >= 0) {
                                     moveAvailable = checkPosIfMoveOn(moveNextPosition, currentValue);
                                     if (moveAvailable == 1) {
-                                        System.out.println(moveNextPosition + " 120");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
                                     } else if (moveAvailable == 2) {
-                                        System.out.println(moveNextPosition + " 124");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
                             moveNextPosition = null;
                             currentValue = 0;
-                            moveAvailable = 0;
                         }
                     }
                     break;
@@ -141,17 +134,14 @@ public class PlayfieldController extends AbstractController {
                                 if (moveNextPosition.getX() < 4) {
                                     moveAvailable = checkPosIfMoveOn(moveNextPosition, currentValue);
                                     if (moveAvailable == 1) {
-                                        System.out.println(moveNextPosition + " 150");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue);
                                     } else if (moveAvailable == 2) {
-                                        System.out.println(moveNextPosition + " 153");
                                         newPlaceTile(currentPosition, moveNextPosition, currentValue * 2);
                                     }
                                 }
                             }
                             moveNextPosition = null;
                             currentValue = 0;
-                            moveAvailable = 0;
                         }
                     }
                     break;
@@ -180,7 +170,6 @@ public class PlayfieldController extends AbstractController {
                             }
                             moveNextPosition = null;
                             currentValue = 0;
-                            moveAvailable = 0;
                         }
                     }
                     break;
@@ -209,7 +198,6 @@ public class PlayfieldController extends AbstractController {
                             }
                             moveNextPosition = null;
                             currentValue = 0;
-                            moveAvailable = 0;
                         }
                     }
                     break;
@@ -348,7 +336,6 @@ public class PlayfieldController extends AbstractController {
             System.out.println("Gewonnen!");
         }
     }
-
 
     public class StartEventHandler implements EventHandler<MouseEvent> {
 
