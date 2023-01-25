@@ -29,22 +29,22 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="1" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="2" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="3" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.rowIndex="1" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.rowIndex="2" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.rowIndex="3" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdc1b4" height="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="1" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="2" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="3" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.rowIndex="1" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.rowIndex="2" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.rowIndex="3" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#cdc1b4" height="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="87.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
