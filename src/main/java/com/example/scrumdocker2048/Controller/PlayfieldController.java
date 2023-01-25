@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -309,13 +310,15 @@ public class PlayfieldController extends AbstractController {
                 }
             }
         }
-
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
             gridPlayfield.add(tp, x, y);
         } else {
-            System.out.println("Gewonnen!");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Gewonnen!");
+            alert.setHeaderText("Sie haben gewonen wollen Sie weiterspielen?");
+            alert.show();
         }
     }
 
