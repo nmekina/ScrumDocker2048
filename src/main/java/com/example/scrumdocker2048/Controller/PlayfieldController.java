@@ -45,6 +45,7 @@ public class PlayfieldController extends AbstractController {
     Username username = new Username();
     UsernameController usernameController = new UsernameController();
 
+    private int[][] grid;
     public void initialize() throws IOException {
         this.gridPlayfield.addEventHandler(MouseEvent.MOUSE_RELEASED, startEventhandler);
         insertingTileInPlayfield();
@@ -88,15 +89,43 @@ public class PlayfieldController extends AbstractController {
             switch (key) {
                 case UP: // row -
                     System.out.println("up");
+
                     for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
                             currentPosition = new Position(col, row);
                             tiles = getTiles();
                             for (TilePane tile : tiles) {
                                 if (Position.comparePositions(currentPosition, tile.getPosition())) {
-                                    moveNextPosition = new Position(tile.getPosition().getX() - 1, tile.getPosition().getY());
-                                    currentValue = tile.getValue();
+                                    if (Position.comparePositions(currentPosition, tile.getPosition())) {
+                                        if (currentPosition.getX()!=0){
+                                            moveNextPosition = new Position(currentPosition.getX(), currentPosition.getY());
+                                            boolean isOverlapping = true;
+                                            while (isOverlapping) {
+                                                isOverlapping = false;
+                                                for (Node child : tile.getChildren()) {
+                                                    if(child instanceof TilePane&&((TilePane) child).getPosition().getY()==moveNextPosition.getY()){
+                                                        if (!Position.comparePositions(moveNextPosition, ((TilePane) child).getPosition())) {
+                                                            /*moveNextPosition = new Position(moveNextPosition.getX() - 1, moveNextPosition.getY());
+                                                            isOverlapping = true;
+                                                            break;
+                                                             */
 
+                                                            while (currentPosition.getX() > 0 && grid[currentPosition.getX()-1][currentPosition.getY()] == 0) {
+                                                             grid[currentPosition.getX()-1][currentPosition.getY() - 1] = grid[currentPosition.getX()][currentPosition.getY()];
+                                                             grid[currentPosition.getX()][currentPosition.getY()] = 0;
+                                                                moveNextPosition = new Position(moveNextPosition.getX() - 1, moveNextPosition.getY());
+                                                               }
+
+                                                        }}
+                                                }
+                                            }
+
+                                        }
+                                        else {
+                                            moveNextPosition = new Position(currentPosition.getX(), currentPosition.getY());
+                                        }
+                                        tile.setPosition(moveNextPosition);
+                                    }
                                 }
                             }
                             if (moveNextPosition != null) {
@@ -332,3 +361,4 @@ public class PlayfieldController extends AbstractController {
         }
     }
 }
+
