@@ -103,13 +103,13 @@ public class PlayfieldController extends AbstractController {
                                             while (isOverlapping) {
                                                 isOverlapping = false;
                                                 for (Node child : tile.getChildren()) {
+                                                    System.out.println("Test");
                                                     if(child instanceof TilePane&&((TilePane) child).getPosition().getY()==moveNextPosition.getY()){
                                                         if (!Position.comparePositions(moveNextPosition, ((TilePane) child).getPosition())) {
                                                             /*moveNextPosition = new Position(moveNextPosition.getX() - 1, moveNextPosition.getY());
                                                             isOverlapping = true;
                                                             break;
                                                              */
-
                                                             while (currentPosition.getX() > 0 && grid[currentPosition.getX()-1][currentPosition.getY()] == 0) {
                                                              grid[currentPosition.getX()-1][currentPosition.getY() - 1] = grid[currentPosition.getX()][currentPosition.getY()];
                                                              grid[currentPosition.getX()][currentPosition.getY()] = 0;
@@ -321,7 +321,6 @@ public class PlayfieldController extends AbstractController {
                 if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
                     placeistaken = true;
                 }
-                System.out.println(gridPlayfield.getChildren().size());
                 if (Math.random() > 0.89) {
                     tp = new TilePane(4);
                 } else {
