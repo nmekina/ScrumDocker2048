@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class PlayfieldController extends AbstractController {
 
     public ColumnConstraints Gridpane;
     public Label labelCurrent;
+    public Button btnClose;
     KeyActionEventHandler keyActionEventHandler = new KeyActionEventHandler();
     StartEventHandler startEventhandler = new StartEventHandler();
     @FXML
@@ -71,6 +73,17 @@ public class PlayfieldController extends AbstractController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Close the Stage if the Close button was pressed.
+     *
+     * @param event
+     */
+    @FXML
+    void btnClosePressed(ActionEvent event) {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
     }
 
     public class KeyActionEventHandler implements EventHandler<KeyEvent> {
