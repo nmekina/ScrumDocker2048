@@ -50,8 +50,8 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
         </GridPane>
-        <Button fx:id="btnBack" layoutX="454.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnBackPressed" prefHeight="25.0" prefWidth="96.0" text="Back" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="580.0" />
-        <Button fx:id="btnNewGame" layoutX="150.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnNewGamePressed" prefHeight="25.0" prefWidth="100.0" text="New Game" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="580.0" />
+        <Button fx:id="btnBack" layoutX="454.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnBackPressed" prefHeight="25.0" prefWidth="96.0" styleClass="btnBack" text="Back" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="580.0" />
+        <Button fx:id="btnNewGame" layoutX="150.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnNewGamePressed" prefHeight="46.0" prefWidth="111.0" styleClass="btnNewGame" text="New Game" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="439.0" AnchorPane.topAnchor="580.0" />
         <Label fx:id="labelName" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="8.0" layoutX="117.0" layoutY="28.0" prefHeight="82.0" prefWidth="203.0" text="2048">
             <font>
                 <Font name="System Bold" size="48.0" />
