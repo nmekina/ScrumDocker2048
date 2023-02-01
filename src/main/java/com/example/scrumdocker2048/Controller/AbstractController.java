@@ -40,6 +40,7 @@ public abstract class AbstractController {
             stage.initOwner(owner);
             stage.initStyle(StageStyle.TRANSPARENT);
         }
+
         Stage closestage = (Stage) owner;
         closestage.close();
         stage.show();

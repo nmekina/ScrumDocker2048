@@ -123,6 +123,7 @@ public class HighscoreController extends AbstractController {
                     index = i;
                 }
             }
+
             score.add(list.get(index));
             list.remove(index);
         }
