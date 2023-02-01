@@ -45,6 +45,8 @@ public class PlayfieldController extends AbstractController {
     Username username = new Username();
     UsernameController usernameController = new UsernameController();
 
+    private int[][] grid;
+
     public void initialize() throws IOException {
         this.gridPlayfield.addEventHandler(MouseEvent.MOUSE_RELEASED, startEventhandler);
         insertingTileInPlayfield();
@@ -87,16 +89,13 @@ public class PlayfieldController extends AbstractController {
             int moveAvailable;
             switch (key) {
                 case UP: // row -
-                    System.out.println("up");
                     for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
                         for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
                             currentPosition = new Position(col, row);
-                            tiles = getTiles();
                             for (TilePane tile : tiles) {
                                 if (Position.comparePositions(currentPosition, tile.getPosition())) {
                                     moveNextPosition = new Position(tile.getPosition().getX() - 1, tile.getPosition().getY());
                                     currentValue = tile.getValue();
-
                                 }
                             }
                             if (moveNextPosition != null) {
@@ -203,7 +202,8 @@ public class PlayfieldController extends AbstractController {
                 if (gridPlayfield.getChildren().size() < 32) {
                     insertingTileInPlayfield();
                 }
-            } catch (IOException e) {
+            } catch (
+                    IOException e) {
                 throw new RuntimeException(e);
             }
 
@@ -292,7 +292,6 @@ public class PlayfieldController extends AbstractController {
                 if (gridPlayfield.getRowIndex(child) == y && gridPlayfield.getColumnIndex(child) == x) {
                     placeistaken = true;
                 }
-                System.out.println(gridPlayfield.getChildren().size());
                 if (Math.random() > 0.89) {
                     tp = new TilePane(4);
                 } else {
@@ -332,3 +331,4 @@ public class PlayfieldController extends AbstractController {
         }
     }
 }
+
