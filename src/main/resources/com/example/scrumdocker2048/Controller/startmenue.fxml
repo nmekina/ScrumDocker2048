@@ -8,25 +8,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.scrumdocker2048.Controller.StartmenueController">
+<AnchorPane prefHeight="400.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scrumdocker2048.Controller.StartmenueController">
     <children>
         <Label fx:id="labelName" layoutX="130.0" layoutY="73.0" text="2048">
             <font>
-                <Font size="31.0"/>
+                <Font size="31.0" />
             </font>
         </Label>
-        <MenuBar>
+        <MenuBar layoutY="1.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Highscore">
                     <items>
-                        <MenuItem fx:id="MenueBarHighscore" mnemonicParsing="false" onAction="#MenueBarHighscoreClicked"
-                                  text="Highscore"/>
+                        <MenuItem fx:id="MenueBarHighscore" mnemonicParsing="false" onAction="#MenueBarHighscoreClicked" text="Highscore" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <Button fx:id="startgamebtn" layoutX="116.0" layoutY="200.0" mnemonicParsing="false"
-                onAction="#ButtonStartGameClicked" text="Start the game"/>
+        <Button fx:id="startgamebtn" layoutX="116.0" layoutY="200.0" mnemonicParsing="false" onAction="#ButtonStartGameClicked" text="Start the game" />
+      <Button fx:id="btnClose" layoutX="318.0" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="25.0" prefWidth="26.0" text="x">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

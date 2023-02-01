@@ -10,7 +10,6 @@ import javafx.stage.Window;
 import java.io.IOException;
 
 public abstract class AbstractController {
-    private Stage stage = null;
 
     /**
      * Loads an FXML file, instantiates a controller object, and shows a new stage.
@@ -52,7 +51,6 @@ public abstract class AbstractController {
      * @param s The stage to be set
      */
     public void setStage(Stage s) {
-        this.stage = s;
     }
 
 }
