@@ -1,0 +1,104 @@
+/*
+https://colordesigner.io/gradient-generator
+ */
+.tile_2 {
+    -fx-background-color: #EEE4DA;
+}
+
+.tile_4 {
+    -fx-background-color: #EEE1C9;
+}
+
+.tile_8 {
+    -fx-background-color: #F3B27A;
+}
+
+.tile_16 {
+    -fx-background-color: #F69664;
+}
+
+.tile_32 {
+    -fx-background-color: #F77C5F;
+}
+
+.tile_64 {
+    -fx-background-color: #F75F3B;
+}
+
+.tile_128 {
+    -fx-background-color: #EDD073;
+}
+
+.tile_256 {
+    -fx-background-color: #EDC950;
+}
+
+.tile_512 {
+    -fx-background-color: #f3c528;
+}
+
+.tile_1024 {
+    -fx-background-color: #b4900c;
+}
+
+.tile_2048 {
+    -fx-background-color: #8d6f05;
+}
+
+.tile_above {
+    -fx-background-color: #4d582a;
+}
+
+.tileLabel_10 {
+    -fx-padding: 19 0 0 34;
+    -fx-text-fill: white;
+    -fx-font-size: 36;
+}
+
+.tileLabel_100 {
+    -fx-padding: 19 0 0 24;
+    -fx-text-fill: white;
+    -fx-font-size: 36;
+}
+
+.tileLabel_1000 {
+    -fx-padding: 19 0 0 14;
+    -fx-text-fill: white;
+    -fx-font-size: 36;
+}
+
+.tileLabel_10000 {
+    -fx-padding: 19 0 0 4;
+    -fx-text-fill: white;
+    -fx-font-size: 36;
+}
+
+#gridPlayfield {
+    -fx-background-color: #BBADA0;
+}
+.btnNewGame {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #9b9d9e 0%, #7a7c7d 100%),
+            #7a7c7d,
+            #9b9d9e,
+            radial-gradient(center 50% 50%, radius 100%, #7a7c7d, #9b9d9e);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.3em;
+}
+.btnBack{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #9b9d9e 0%, #7a7c7d 100%),
+            #7a7c7d,
+            #9b9d9e,
+            radial-gradient(center 50% 50%, radius 100%, #7a7c7d, #9b9d9e);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.3em;
+}
