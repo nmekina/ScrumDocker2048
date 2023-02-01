@@ -7,6 +7,12 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
+/**
+ * This class represents a user in the game of 2048.
+ * It contains data members such as the user's id, username, password, highscore, and games played.
+ * The class has methods to retrieve a list of all users, insert a new user into the database,
+ * and update a user's highscore in the database.
+ */
 public class Username {
     private int id;
     private String username;
@@ -16,8 +22,15 @@ public class Username {
 
     private int currentHighscore = 0;
 
+    // instance of the username controller class
     UsernameController usernameController = new UsernameController();
 
+    /**
+     * Constructor to initialize a user from a result set obtained from a database query.
+     *
+     * @param results - the result set obtained from a database query
+     * @throws SQLException - thrown if there is an error accessing the result set
+     */
     public Username(ResultSet results) throws SQLException {
         this.id = results.getInt("userid");
         this.username = results.getString("name");
@@ -26,16 +39,31 @@ public class Username {
         this.gamesPlayed = results.getInt("gamesPlayed");
     }
 
+    /**
+     * Constructor to initialize a user with a username and password.
+     *
+     * @param username - the user's username
+     * @param password - the user's password
+     */
     public Username(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    /**
+     * Default constructor
+     */
     public Username() {
 
     }
 
+    /**
+     * Method to retrieve the user's highscore from the database.
+     *
+     * @return - the user's highscore
+     */
     public Integer getHighscore() {
+        // get connection to database
         Connection c = Database.getConnection();
 
         try {
@@ -52,9 +80,15 @@ public class Username {
         return highscore;
     }
 
-
+    /**
+     * Method to retrieve a list of all users from the database.
+     *
+     * @return - an observable list of all users
+     */
     public static ObservableList<Username> getList() {
+        // create an observable list to hold the users
         ObservableList<Username> list = FXCollections.observableArrayList();
+        // get connection to database
         Connection c = Database.getConnection();
 
         try {
@@ -75,6 +109,10 @@ public class Username {
         return list;
     }
 
+    /**
+     * Inserts a new user into the t_user table in the database. The username and password are
+     * passed as parameters.
+     */
     public void insertUser() {
         Connection c = Database.getConnection();
 
@@ -86,6 +124,14 @@ public class Username {
         }
     }
 
+    /**
+     * Updates the highscore and games played for a user in the t_statistics table in the database.
+     * If the user has not played any games before, a new record is inserted into the table.
+     * If the user has a previous highscore, their games played counter is incremented and their
+     * highscore is updated if the new highscore is higher than their previous one.
+     *
+     * @param highscore The new highscore to be set for the user.
+     */
     public void updateHighscore(Highscore highscore) {
         Connection c = Database.getConnection();
 
@@ -107,45 +153,92 @@ public class Username {
         }
     }
 
+    /**
+     * Returns the username of the user.
+     *
+     * @return The username of the user.
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the username of the user.
+     *
+     * @param username The new username to be set for the user.
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Returns the password of the user.
+     *
+     * @return The password of the user.
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets the password of the user.
+     *
+     * @param password The new username to be set for the user.
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-
+    /**
+     * Returns the gamesPlayed of the user.
+     *
+     * @return The gamesPlayed of the user.
+     */
     public Integer getGamesPlayed() {
         return gamesPlayed;
     }
 
+    /**
+     * Sets the gamesPlayed of the user.
+     *
+     * @param gamesPlayed The new username to be set for the user.
+     */
     public void setGamesPlayed(Integer gamesPlayed) {
         this.gamesPlayed += 1;
     }
 
+    /**
+     * Sets the highscore of the user.
+     *
+     * @param highscore The new username to be set for the user.
+     */
     public void setHighscore(Integer highscore) {
         this.highscore = highscore;
     }
 
+    /**
+     * Returns a string representation of the Username in the form of "username - highscore - gamesPlayed".
+     * @return The string representation of the Username.
+     */
     @Override
     public String toString() {
         return username + " - " + highscore + " - " + gamesPlayed;
     }
 
+    /**
+     * Returns the CurrentHighscore of the user.
+     *
+     * @return The CurrentHighscore of the user.
+     */
     public int getCurrentHighscore() {
         return currentHighscore;
     }
 
-
+    /**
+     * Sets the currentHighscore of the user.
+     *
+     * @param val The highscore to add to the currentHighscore.
+     */
     public void addOnHighScore(int val){
         this.currentHighscore += val;
     }
