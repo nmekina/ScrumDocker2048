@@ -146,11 +146,12 @@ public class Username {
     public void updateHighscore(Highscore highscore) {
         Connection c = Database.getConnection();
 
+        this.highscore = highscore.getHighscore();
+
         try {
             PreparedStatement statement;
             this.gamesPlayed += 1;
             statement = c.prepareStatement("UPDATE t_statistics SET highscore = " + this.highscore + ", gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
-            statement = c.prepareStatement("UPDATE t_statistics SET gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

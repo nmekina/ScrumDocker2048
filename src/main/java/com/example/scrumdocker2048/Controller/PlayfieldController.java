@@ -263,6 +263,7 @@ public class PlayfieldController extends AbstractController {
                 if (checkLose) {
                     // add highscore to database
                     Highscore highscore = new Highscore();
+                    System.out.println(Integer.valueOf(labelHighestScore.getText()));
                     highscore.setHighscore(Integer.valueOf(labelHighestScore.getText()));
 
                     currentUsername.updateHighscore(highscore);
