@@ -5,6 +5,13 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class PasswordHasher {
+    /**
+     * Hashes the given password using the SHA-256 algorithm and returns the result as a string.
+     *
+     * @param password The password to be hashed
+     * @return The hashed password as a string
+     * @throws RuntimeException if the SHA-256 algorithm is not available
+     */
     public static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");

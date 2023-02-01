@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class UsernameController extends AbstractController {
 
@@ -42,25 +43,21 @@ public class UsernameController extends AbstractController {
     }
 
     public void setName(String name) {
-        UsernameController.name = name;
+        this.name = name;
     }
 
     private ObservableList<String> list = FXCollections.observableArrayList();
 
     public void initialize() {
-        this.txtUsername.setPromptText("username");
-        this.txtPassword.setPromptText("password");
-        for (Username username : Username.getList()) {
-            list.add(username.getUsername());
-        }
-        if (list.size() > 0) {
-            this.dropdownUsername.setItems(list);
-            dropdownUsername.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        txtUsername.setPromptText("username");
+        txtPassword.setPromptText("password");
 
-                public void changed(ObservableValue ov, Number value, Number new_value) {
-                    txtUsername.setText(dropdownUsername.getItems().get(new_value.intValue()) + "");
-                    setName(dropdownUsername.getItems().get(Integer.parseInt(new_value.intValue() + "")));
-                }
+        list.addAll(Username.getList().stream().map(Username::getUsername).toList());
+        if (!list.isEmpty()) {
+            dropdownUsername.setItems(list);
+            dropdownUsername.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+                txtUsername.setText(list.get(newValue.intValue()));
+                setName(list.get(newValue.intValue()));
             });
         }
     }
@@ -87,10 +84,11 @@ public class UsernameController extends AbstractController {
     @FXML
     void btnPlayPressed(ActionEvent event) {
         boolean check = true;
+        name = txtUsername.getText();
 
 
         for (Username user : Username.getList()) {
-            if (txtUsername.getText().equals(user.getUsername())) {
+            if (name.equals(user.getUsername())) {
                 if (PasswordHasher.hashPassword(txtPassword.getText()).equals(user.getPassword())) {
                     Stage stage = (Stage) btnPlay.getScene().getWindow();
                     stage.close();

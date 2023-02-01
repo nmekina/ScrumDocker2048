@@ -1,3 +1,6 @@
+/**
+ * The HighscoreController class implements the functionality for the Highscore screen.
+ */
 package com.example.scrumdocker2048.Controller;
 
 import com.example.scrumdocker2048.Model.Username;
@@ -13,20 +16,37 @@ import java.io.IOException;
 
 public class HighscoreController extends AbstractController {
 
-
+    /**
+     * A reference to the score button.
+     */
     @FXML
     private Button btnScore;
 
+    /**
+     * A reference to the list view for the highscore.
+     */
     @FXML
     private ListView<Username> listviewHighscore;
 
+    /**
+     * The list of usernames that make up the highscore.
+     */
     private ObservableList<Username> list;
 
+    /**
+     * Initializes the list of usernames.
+     */
     public void initialize() {
         list = Username.getList();
         listviewHighscore.setItems(list);
     }
 
+    /**
+     * Handles the event when the games played button is pressed.
+     * Sorts the list of usernames based on the number of games played.
+     *
+     * @param event the action event that triggered this method
+     */
     @FXML
     void btnGamesPlayedPressed(ActionEvent event) {
         // list sortieren
@@ -50,9 +70,16 @@ public class HighscoreController extends AbstractController {
         listviewHighscore.setItems(list);
     }
 
+
+    /**
+     * Handles the event when the name button is pressed.
+     * Sorts the list of usernames based on their names.
+     *
+     * @param event the action event that triggered this method
+     */
     @FXML
     void btnNamePressed(ActionEvent event) {
-        // list sortieren
+        // sort the list by username
         ObservableList<Username> name = FXCollections.observableArrayList();
         String highest;
         int index;
@@ -73,6 +100,13 @@ public class HighscoreController extends AbstractController {
         listviewHighscore.setItems(list);
     }
 
+    /**
+     * This method is called when the "Score" button is pressed. It sorts the list of Usernames based on their high score.
+     * The list is sorted in descending order, so that the user with the highest score is displayed first.
+     * The sorted list is then displayed in the list view.
+     *
+     * @param event the event that triggered the button press
+     */
     @FXML
     void btnScorePressed(ActionEvent event) {
         // list sortieren
