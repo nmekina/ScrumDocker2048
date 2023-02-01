@@ -87,12 +87,10 @@ public class PlayfieldController extends AbstractController {
     }
 
     public class KeyActionEventHandler implements EventHandler<KeyEvent> {
-
-
-
         @Override
         public void handle(KeyEvent event) {
-
+            System.out.println("a");
+            checkLose();
             KeyCode key = event.getCode();
             ObservableList<TilePane> tiles = getTiles();
             Position currentPosition;
@@ -238,6 +236,39 @@ public class PlayfieldController extends AbstractController {
 
         }
 
+        private void checkLose() {
+            ObservableList<TilePane> tilePanes = getTiles();
+            boolean checkLose = true;
+
+            if (tilePanes.size() == 16) {
+                for (TilePane pane1 : tilePanes) {
+                    for (TilePane pane2 : tilePanes) {
+                        if (pane1.getValue() == pane2.getValue()) {
+                            if (pane1.getPosition().getX() == pane2.getPosition().getX()) {
+                                if (pane1.getPosition().getY() == (pane2.getPosition().getY() + 1)) {
+                                    checkLose = false;
+                                } else if (pane1.getPosition().getY() == (pane2.getPosition().getY() - 1)) {
+                                    checkLose = false;
+                                }
+                            } else if (pane1.getPosition().getY() == pane2.getPosition().getY()) {
+                                if (pane1.getPosition().getX() == (pane2.getPosition().getX() + 1)) {
+                                    checkLose = false;
+                                } else if (pane1.getPosition().getX() == (pane2.getPosition().getX() - 1)) {
+                                    checkLose = false;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (checkLose) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Verloren!");
+                    alert.setHeaderText("Sie haben verloren! Wollen Sie noch einmal spielen?");
+                    alert.show();
+                }
+            }
+        }
+
         private int checkPosIfMoveOn(Position moveNextPosition, int val) {
             ObservableList<TilePane> tiles = getTiles();
             int returnValue = 1;
@@ -340,6 +371,7 @@ public class PlayfieldController extends AbstractController {
                 }
             }
         }
+
         if (placeistaken && !over) {
             insertingTileInPlayfield();
         } else if (!over) {
