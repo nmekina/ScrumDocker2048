@@ -172,6 +172,7 @@ public class UsernameController extends AbstractController {
 
             currentUsername = username;
 
+            username.insertStats();
             Stage stage = (Stage) btnPlay.getScene().getWindow();
             stage.close();
             try {

@@ -124,6 +124,17 @@ public class Username {
         }
     }
 
+    public void insertStats() {
+        Connection c = Database.getConnection();
+
+        try {
+            PreparedStatement statement2 = c.prepareStatement("INSERT INTO t_statistics (userid, highscore, gamesPlayed) VALUES (" + this.id + ", 0, 0);");
+            statement2.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Updates the highscore and games played for a user in the t_statistics table in the database.
      * If the user has not played any games before, a new record is inserted into the table.
@@ -137,16 +148,9 @@ public class Username {
 
         try {
             PreparedStatement statement;
-            if (this.highscore != 0) {
-                this.gamesPlayed += 1;
-                if (highscore.getHighscore() > this.highscore) {
-                    statement = c.prepareStatement("UPDATE t_statistics SET highscore = " + this.highscore + ", gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
-                } else {
-                    statement = c.prepareStatement("UPDATE t_statistics SET gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
-                }
-            } else {
-                statement = c.prepareStatement("INSERT INTO t_statistics(userid, highscore, gamesPlayed) VALUES (" + this.id + ", " + this.highscore + ", " + this.gamesPlayed + ");");
-            }
+            this.gamesPlayed += 1;
+            statement = c.prepareStatement("UPDATE t_statistics SET highscore = " + this.highscore + ", gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
+            statement = c.prepareStatement("UPDATE t_statistics SET gamesPlayed = " + this.gamesPlayed + " WHERE userid = " + this.id + ";");
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -218,6 +222,7 @@ public class Username {
 
     /**
      * Returns a string representation of the Username in the form of "username - highscore - gamesPlayed".
+     *
      * @return The string representation of the Username.
      */
     @Override
@@ -239,7 +244,7 @@ public class Username {
      *
      * @param val The highscore to add to the currentHighscore.
      */
-    public void addOnHighScore(int val){
+    public void addOnHighScore(int val) {
         this.currentHighscore += val;
     }
 }

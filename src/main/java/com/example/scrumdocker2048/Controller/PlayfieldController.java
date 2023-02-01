@@ -48,7 +48,6 @@ public class PlayfieldController extends AbstractController {
     Username currentUsername = UsernameController.currentUsername;
 
     public void initialize() throws IOException {
-        System.out.println(currentUsername.getUsername());
         this.gridPlayfield.addEventHandler(MouseEvent.MOUSE_RELEASED, startEventhandler);
         insertingTileInPlayfield();
         insertingTileInPlayfield();
@@ -267,8 +266,6 @@ public class PlayfieldController extends AbstractController {
                     highscore.setHighscore(Integer.valueOf(labelHighestScore.getText()));
 
                     currentUsername.updateHighscore(highscore);
-
-
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Verloren!");
