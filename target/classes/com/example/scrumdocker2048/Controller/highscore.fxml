@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scrumdocker2048.Controller.HighscoreController">
+   <children>
+      <Label layoutX="153.0" layoutY="14.0" text="Highscore">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnName" layoutX="27.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnNamePressed" text="Name" />
+      <Button fx:id="btnScore" layoutX="87.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnScorePressed" text="Score" />
+      <Button fx:id="btnGamesPlayed" layoutX="143.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnGamesPlayedPressed" text="Games Played" />
+      <ListView fx:id="listviewHighscore" layoutX="27.0" layoutY="89.0" prefHeight="295.0" prefWidth="338.0" />
+      <Button fx:id="btnClose" layoutX="355.0" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="16.0" prefWidth="27.0" text="x">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
