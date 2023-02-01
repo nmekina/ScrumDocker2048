@@ -115,3 +115,33 @@ https://colordesigner.io/gradient-generator
     -fx-font-weight: bold;
     -fx-font-size: 1.3em;
 }
+.btnClose{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+    #9d4024,
+    #ff0000,
+    radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.3em;
+}
+.btnPlay{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #008000 0%, #008000 100%),
+    #80ff80,
+    #80ff80,
+    radial-gradient(center 50% 50%, radius 100%, #008000, #008000);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.3em;
+}
+#labelName{
+    -fx-font-size: 32px;
+    -fx-font-family: "Arial Black";
+    -fx-fill: #ffa64d;
+    -fx-effect: innershadow(three-pass-box, #ff6600, 10, 0, 0, 0);
+}
