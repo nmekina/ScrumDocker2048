@@ -18,6 +18,7 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
+
     }
 
     public static void main(String[] args) {

@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ public abstract class AbstractController {
         if (owner != null) {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(owner);
+            stage.initStyle(StageStyle.TRANSPARENT);
         }
         Stage closestage = (Stage) owner;
         closestage.close();
