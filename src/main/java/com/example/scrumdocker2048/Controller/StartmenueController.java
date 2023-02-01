@@ -4,11 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class StartmenueController extends AbstractController {
 
+    public Button btnClose;
     @FXML
     private Label labelName;
 
@@ -44,4 +46,17 @@ public class StartmenueController extends AbstractController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Close the Stage if the Close button was pressed.
+     *
+     * @param actionEvent
+     */
+    @FXML
+    public void btnClosePressed(ActionEvent actionEvent) {
+
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+    }
 }
+

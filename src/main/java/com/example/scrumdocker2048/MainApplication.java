@@ -11,7 +11,7 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AbstractController.class.getResource("playfield.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AbstractController.class.getResource("splashview.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("2048!");
         stage.setScene(scene);
