@@ -43,7 +43,7 @@ public class UsernameController extends AbstractController {
     }
 
     public void setName(String name) {
-        UsernameController.name = name;
+        this.name = name;
     }
 
     private ObservableList<String> list = FXCollections.observableArrayList();
@@ -84,10 +84,11 @@ public class UsernameController extends AbstractController {
     @FXML
     void btnPlayPressed(ActionEvent event) {
         boolean check = true;
+        name = txtUsername.getText();
 
 
         for (Username user : Username.getList()) {
-            if (txtUsername.getText().equals(user.getUsername())) {
+            if (name.equals(user.getUsername())) {
                 if (PasswordHasher.hashPassword(txtPassword.getText()).equals(user.getPassword())) {
                     Stage stage = (Stage) btnPlay.getScene().getWindow();
                     stage.close();
