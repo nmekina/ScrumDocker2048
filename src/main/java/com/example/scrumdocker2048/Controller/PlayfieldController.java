@@ -1,5 +1,6 @@
 package com.example.scrumdocker2048.Controller;
 
+import com.example.scrumdocker2048.Model.Highscore;
 import com.example.scrumdocker2048.Model.Position;
 import com.example.scrumdocker2048.Model.TilePane;
 import com.example.scrumdocker2048.Model.Username;
@@ -44,16 +45,16 @@ public class PlayfieldController extends AbstractController {
     public Label labelCurrentHighscore;
     @FXML
     public Label labelHighestScore;
-    Username username = new Username();
-    UsernameController usernameController = new UsernameController();
+    Username currentUsername = UsernameController.currentUsername;
 
     public void initialize() throws IOException {
+        System.out.println(currentUsername.getUsername());
         this.gridPlayfield.addEventHandler(MouseEvent.MOUSE_RELEASED, startEventhandler);
         insertingTileInPlayfield();
         insertingTileInPlayfield();
-        labelCurrent.setText(usernameController.getName());
-        labelHighestScore.setText(String.valueOf(username.getHighscore()));
-        labelCurrentHighscore.setText(String.valueOf(username.getCurrentHighscore()));
+        labelCurrent.setText(currentUsername.getUsername());
+        labelHighestScore.setText(String.valueOf(currentUsername.getHighscore()));
+        labelCurrentHighscore.setText(String.valueOf(currentUsername.getCurrentHighscore()));
     }
 
 
@@ -261,6 +262,9 @@ public class PlayfieldController extends AbstractController {
                     }
                 }
                 if (checkLose) {
+                    // add highscore to database
+
+
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Verloren!");
                     alert.setHeaderText("Sie haben verloren! Wollen Sie noch einmal spielen?");
@@ -282,11 +286,11 @@ public class PlayfieldController extends AbstractController {
                     }
                 }
                 if (returnValue == 2) {
-                    username.addOnHighScore(val * 2);
-                    if (username.getCurrentHighscore() >= username.getHighscore()) {
-                        labelHighestScore.setText(String.valueOf(username.getCurrentHighscore()));
+                    currentUsername.addOnHighScore(val * 2);
+                    if (currentUsername.getCurrentHighscore() >= currentUsername.getHighscore()) {
+                        labelHighestScore.setText(String.valueOf(currentUsername.getCurrentHighscore()));
                     }
-                    labelCurrentHighscore.setText(String.valueOf(username.getCurrentHighscore()));
+                    labelCurrentHighscore.setText(String.valueOf(currentUsername.getCurrentHighscore()));
                 }
             } else {
                 returnValue = 0;

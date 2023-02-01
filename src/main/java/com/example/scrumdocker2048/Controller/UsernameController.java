@@ -21,6 +21,8 @@ import java.io.IOException;
 
 public class UsernameController extends AbstractController {
 
+    public static Username currentUsername;
+
     /**
      * A text field where the username is entered.
      */
@@ -153,6 +155,7 @@ public class UsernameController extends AbstractController {
                     Stage stage = (Stage) btnPlay.getScene().getWindow();
                     stage.close();
                     try {
+                        currentUsername = user;
                         PlayfieldController c = this.loadFxmlFile("playfield.fxml", "Spiel",
                                 ((Button) event.getSource()).getScene().getWindow(), PlayfieldController.class);
                     } catch (IOException e) {
@@ -166,6 +169,8 @@ public class UsernameController extends AbstractController {
             // Insert new User in Database
             Username username = new Username(txtUsername.getText(), txtPassword.getText());
             username.insertUser();
+
+            currentUsername = username;
 
             Stage stage = (Stage) btnPlay.getScene().getWindow();
             stage.close();
