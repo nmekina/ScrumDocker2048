@@ -89,6 +89,7 @@ public class PlayfieldController extends AbstractController {
     public class KeyActionEventHandler implements EventHandler<KeyEvent> {
 
 
+
         @Override
         public void handle(KeyEvent event) {
 

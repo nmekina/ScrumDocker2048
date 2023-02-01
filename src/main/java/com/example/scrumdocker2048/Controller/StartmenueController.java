@@ -55,6 +55,7 @@ public class StartmenueController extends AbstractController {
     @FXML
     public void btnClosePressed(ActionEvent actionEvent) {
 
+
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
     }
