@@ -57,7 +57,13 @@ public class PlayfieldController extends AbstractController {
         labelCurrentHighscore.setText(String.valueOf(currentUsername.getCurrentHighscore()));
     }
 
-
+    /**
+     *
+     * Handles the event when the "Back" button is pressed.
+     * Loads the start menu scene from the "startmenue.fxml" file.
+     * @param actionEvent the event triggered by pressing the "Back" button
+     * @throws RuntimeException if an {@link IOException} occurs while loading the "startmenue.fxml" file
+     */
     @FXML
     public void btnBackPressed(ActionEvent actionEvent) {
         try {
@@ -67,6 +73,13 @@ public class PlayfieldController extends AbstractController {
         }
     }
 
+    /**
+     *
+     * Handles the event when the "New Game" button is pressed.
+     * Loads the game scene from the "playfield.fxml" file.
+     *@param actionEvent the event triggered by pressing the "New Game" button
+     * @throws RuntimeException if an {@link IOException} occurs while loading the "playfield.fxml" file
+     */
     @FXML
     public void btnNewGamePressed(ActionEvent actionEvent) {
         try {
@@ -88,9 +101,14 @@ public class PlayfieldController extends AbstractController {
     }
 
     public class KeyActionEventHandler implements EventHandler<KeyEvent> {
+        /**
+         * Handles the event when a button is pressed
+         * in each case it iterates over the playfield and moves the tiles if it is available
+         * If the number of tiles is less than 32, a new tile is added
+         * @param event
+         */
         @Override
         public void handle(KeyEvent event) {
-            System.out.println("a");
             checkLose();
             KeyCode key = event.getCode();
             ObservableList<TilePane> tiles = getTiles();
@@ -130,6 +148,13 @@ public class PlayfieldController extends AbstractController {
                             moveAvailable = 1;
                         }
                     }
+                    if (gridPlayfield.getChildren().size() < 32) {
+                        try {
+                            insertingTileInPlayfield();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                     break;
                 case DOWN:// row +
                     for (int row = 0; row < gridPlayfield.getRowCount(); row++) {
@@ -159,6 +184,13 @@ public class PlayfieldController extends AbstractController {
                             moveNextPosition = null;
                             currentValue = 0;
                             moveAvailable = 1;
+                        }
+                    }
+                    if (gridPlayfield.getChildren().size() < 32) {
+                        try {
+                            insertingTileInPlayfield();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
                         }
                     }
                     break;
@@ -192,6 +224,13 @@ public class PlayfieldController extends AbstractController {
                             moveAvailable = 1;
                         }
                     }
+                    if (gridPlayfield.getChildren().size() < 32) {
+                        try {
+                            insertingTileInPlayfield();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                     break;
                 case RIGHT: // col +
                     for (int col = 0; col < gridPlayfield.getColumnCount(); col++) {
@@ -223,20 +262,25 @@ public class PlayfieldController extends AbstractController {
                             moveAvailable = 1;
                         }
                     }
+                    if (gridPlayfield.getChildren().size() < 32) {
+                        try {
+                            insertingTileInPlayfield();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                     break;
                 default:
             }
-            try {
-                if (gridPlayfield.getChildren().size() < 32) {
-                    insertingTileInPlayfield();
-                }
-            } catch (
-                    IOException e) {
-                throw new RuntimeException(e);
-            }
-
         }
-
+        /**
+         *
+         * The checkLose method checks if the game is lost and updates the highscore if necessary.
+         * It retrieves all the tiles from the game and loops through each tile to compare its value with other tiles.
+         * If there is no match found, the game is lost and the highscore is updated by retrieving the current score,
+         * creating a new Highscore object and setting the highscore value to it.
+         * Then an alert is displayed to inform the player that the game is lost and ask if they want to play again.
+         */
         private void checkLose() {
             ObservableList<TilePane> tilePanes = getTiles();
             boolean checkLose = true;
@@ -276,7 +320,13 @@ public class PlayfieldController extends AbstractController {
                 }
             }
         }
+        /**
 
+         Check the position if move is possible.
+         @param moveNextPosition the position to be checked
+         @param val the value to be checked
+         @return the status of the check: 0 for illegal move, 1 for empty position, 2 for a merge.
+         */
         private int checkPosIfMoveOn(Position moveNextPosition, int val) {
             ObservableList<TilePane> tiles = getTiles();
             int returnValue = 1;
@@ -302,6 +352,11 @@ public class PlayfieldController extends AbstractController {
             return returnValue;
         }
 
+        /**
+         *
+         * Returns a list of {@link TilePane} objects that are currently in the grid playfield.
+         * @return An {@link ObservableList} of {@link TilePane} objects
+         */
         private ObservableList<TilePane> getTiles() {
             ObservableList<Node> children = gridPlayfield.getChildren();
             ObservableList<TilePane> tiles = FXCollections.observableArrayList();
@@ -317,7 +372,15 @@ public class PlayfieldController extends AbstractController {
             }
             return tiles;
         }
-
+        /**
+         *
+         * This method is used to place a new tile on the playfield with a given value.
+         * It first gets the list of all existing tiles in the playfield and adds the tile with the given value at the next position.
+         * The tiles present at the current position and next position are removed.
+         * @param position current position of the tile
+         * @param nextPosition next position of the tile
+         * @param val value of the new tile
+         */
         private void newPlaceTile(Position position, Position nextPosition, int val) {
             ObservableList<TilePane> tiles = getTiles();
             List<TilePane> removeTile = new ArrayList<>();
@@ -394,6 +457,12 @@ public class PlayfieldController extends AbstractController {
 
     public class StartEventHandler implements EventHandler<MouseEvent> {
 
+        /**
+         *
+         * Handles the MouseEvent and adds a KeyEvent filter to the scene.
+         * This method also removes the MouseEvent handler from the grid playfield and sets the visibility of the start label to false.
+         * @param mouseEvent The mouse event to be handled
+         */
         @Override
         public void handle(MouseEvent mouseEvent) {
             labelName.getScene().addEventFilter(KeyEvent.KEY_PRESSED, keyActionEventHandler);
