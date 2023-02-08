@@ -67,7 +67,7 @@ public class HighscoreController extends AbstractController {
             list.remove(index);
         }
         list = gamesPlayed;
-        listviewHighscore.setItems(list);
+        listviewHighscore.getItems().setAll(list);
     }
 
 
@@ -97,7 +97,7 @@ public class HighscoreController extends AbstractController {
             list.remove(index);
         }
         list = name;
-        listviewHighscore.setItems(list);
+        listviewHighscore.getItems().setAll(list);
     }
 
     /**
@@ -128,7 +128,7 @@ public class HighscoreController extends AbstractController {
             list.remove(index);
         }
         list = score;
-        listviewHighscore.setItems(list);
+        listviewHighscore.getItems().setAll(list);
     }
 
     @FXML
