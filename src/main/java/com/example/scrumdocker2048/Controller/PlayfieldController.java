@@ -67,6 +67,7 @@ public class PlayfieldController extends AbstractController {
         }
     }
 
+
     @FXML
     public void btnNewGamePressed(ActionEvent actionEvent) {
         try {
