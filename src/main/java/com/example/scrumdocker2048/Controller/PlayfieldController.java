@@ -53,6 +53,7 @@ public class PlayfieldController extends AbstractController {
         insertingTileInPlayfield();
         labelCurrent.setText(currentUsername.getUsername());
         labelHighestScore.setText(String.valueOf(currentUsername.getHighscore()));
+        currentUsername.setCurrentHighscore(0);
         labelCurrentHighscore.setText(String.valueOf(currentUsername.getCurrentHighscore()));
     }
 

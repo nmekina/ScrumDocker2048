@@ -240,6 +240,10 @@ public class Username {
         return currentHighscore;
     }
 
+    public void setCurrentHighscore(int currentHighscore) {
+        this.currentHighscore = currentHighscore;
+    }
+
     /**
      * Sets the currentHighscore of the user.
      *
