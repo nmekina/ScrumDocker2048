@@ -13,9 +13,9 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnName" layoutX="27.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnNamePressed" text="Name" />
-      <Button fx:id="btnScore" layoutX="87.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnScorePressed" text="Score" />
-      <Button fx:id="btnGamesPlayed" layoutX="143.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnGamesPlayedPressed" text="Games Played" />
+      <Button fx:id="btnName" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#btnNamePressed" styleClass="btnhighscore" text="Name" />
+      <Button fx:id="btnScore" layoutX="79.0" layoutY="43.0" mnemonicParsing="false" onAction="#btnScorePressed" styleClass="btnhighscore" text="Score" />
+      <Button fx:id="btnGamesPlayed" layoutX="144.0" layoutY="43.0" mnemonicParsing="false" onAction="#btnGamesPlayedPressed" prefHeight="38.0" prefWidth="93.0" styleClass="btnhighscore" text="Games Played" />
       <ListView fx:id="listviewHighscore" layoutX="27.0" layoutY="89.0" prefHeight="295.0" prefWidth="338.0" />
       <Button fx:id="btnClose" layoutX="328.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="16.0" prefWidth="27.0" styleClass="btnClose" text="x">
          <font>
