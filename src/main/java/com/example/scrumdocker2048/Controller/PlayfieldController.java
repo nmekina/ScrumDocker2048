@@ -272,6 +272,7 @@ public class PlayfieldController extends AbstractController {
                     break;
                 default:
             }
+
         }
         /**
          *
